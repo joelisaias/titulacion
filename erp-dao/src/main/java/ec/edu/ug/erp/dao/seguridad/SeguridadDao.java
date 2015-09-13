@@ -24,11 +24,14 @@ import ec.edu.ug.erp.util.dao.GenericDAO;
 public interface SeguridadDao extends GenericDAO<GenericSeguridadDTO<?>>{
 
 	
-	public List<ModuloDTO> loadMenu(Tipo tipo,Object...filters) throws Exception;	
+	public List<ModuloDTO> loadMenu(List<Tipo> tipo,Object...filters) throws Exception;	
 	public UsuarioDTO obtenerUsuarioSesion(UsuarioDTO usuario,EmpresaDTO empresa) throws Exception;
 	public List<ModuloDTO> obtenerOpcionesPermitidas(UsuarioSucursalDTO usuarioAutenticado) throws Exception;
 	public List<UsuarioSucursalDTO> obtenerUsuariosSucursal(UsuarioDTO usuario) throws Exception;
 	public UsuarioSucursalDTO obtenerUsuarioSucursal(UsuarioDTO usuario) throws Exception;
 	public UsuarioDTO findByUserName(String username) throws Exception;
-	public Collection<RolDTO> findRolesByUrl(String url) throws Exception;	
+	public Collection<RolDTO> findRolesByUrl(String url) throws Exception;
+	public ModuloDTO obtenerModuloBienvenidaPorUsuario(UsuarioSucursalDTO usuarioAutenticado) throws Exception;
+	public List<ModuloDTO> obtenerListModulos()throws Exception;
+	
 }

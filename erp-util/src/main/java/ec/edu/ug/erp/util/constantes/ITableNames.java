@@ -34,6 +34,10 @@ public interface ITableNames {
 	public static final String USUARIO_ROL="SEGUTUSUARIO_ROL";
 	public static final String USUARIO_SUCURSAL="SEGUTUSUARIO_SUCURSAL";
 	
+	/*
+	 * COMPRAS
+	 */
+	public static final String ORDEN_COMPRA="COMPTORDEN_COMPRA";
 	
 	
 }

@@ -187,6 +187,10 @@ public class ModuloDTO extends GenericSeguridadDTO<ModuloDTO>{
 		this.tareaDTOs = tareaDTOs;
 	}
 
+	
+	public String toJsonString(){
+		return "{\"id\":"+getId()+"}";
+	}
 
 
 	/**
@@ -223,8 +227,8 @@ public class ModuloDTO extends GenericSeguridadDTO<ModuloDTO>{
 		
 		public static Map<String, Tipo> LABELED_MAP;
 		
-		public static final List<Tipo> LIST =
-			Arrays.asList(Tipo.values());
+		public static final List<Tipo> LIST =Arrays.asList(Tipo.values());
+		public static final List<Tipo> LIST_PARENTS =Arrays.asList(MODULO,WELCOMEPAGE);
 
 		private Tipo(String value) {
 			this.val = value;

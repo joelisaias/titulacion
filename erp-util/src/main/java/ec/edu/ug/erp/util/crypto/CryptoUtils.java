@@ -39,7 +39,7 @@ public class CryptoUtils {
 	
 	public static void main(String[] args) {
 		
-		String password="12345";
+		String password="ADMIN";
 		System.out.println("BCRYPT "+encode(password));
 		System.out.println("MD5 "+encodeMD5(password));
 		System.out.println("SHA "+encodeSHA(password));

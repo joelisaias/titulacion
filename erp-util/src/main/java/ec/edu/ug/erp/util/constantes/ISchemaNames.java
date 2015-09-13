@@ -6,7 +6,7 @@ public interface ISchemaNames {
 	public static final String ADMINISTRACION="public";
 	public static final String SEGURIDAD="public";
 	public static final String RRHH="public";
-	public static final String COMPRA="public";
+	public static final String COMPRAS="public";
 	public static final String FACTURACION="public";
 	public static final String INVENTARIO="public";
 	public static final String CONTABILIDAD="public";

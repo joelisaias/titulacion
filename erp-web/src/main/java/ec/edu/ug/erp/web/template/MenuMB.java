@@ -36,12 +36,12 @@ public class MenuMB extends TemplateMB implements Serializable {
 	}
 
 	private MenuModel loadMenu() {
-		usuarioSesion.validaSesion();
+		
 		MenuModel menu = new DefaultMenuModel();
 	
 		List<ModuloDTO> modulos = new ArrayList<ModuloDTO>();
 		try {			
-			modulos =seguridad.loadMenu(usuarioSesion.getUsuarioSucursal());
+			modulos =seguridad.loadMenu(getUsuarioSesion().getUsuarioSucursal());
 			
 			for (ModuloDTO modulo : modulos) {
 				if(!modulo.getModuloDTOs().isEmpty()){
@@ -57,6 +57,7 @@ public class MenuMB extends TemplateMB implements Serializable {
 					menItm.setIcon(modulo.getIcono());
 					menItm.setTitle(modulo.getDescripcion());
 					menItm.setUrl(modulo.getAccionListar());
+					menItm.setCommand(modulo.toJsonString());
 					menu.addElement(menItm);
 				}
 			}
@@ -74,7 +75,8 @@ public class MenuMB extends TemplateMB implements Serializable {
 			DefaultMenuItem menItm = new DefaultMenuItem(modulo.getDescripcion());
 			menItm.setIcon(modulo.getIcono());
 			menItm.setTitle(modulo.getDescripcion());
-			menItm.setUrl(modulo.getAccionListar());			
+			menItm.setUrl(modulo.getAccionListar());		
+			menItm.setCommand(modulo.toJsonString());
 			return menItm;
 		} else {
 			DefaultSubMenu subMenu = new DefaultSubMenu(modulo.getDescripcion());			

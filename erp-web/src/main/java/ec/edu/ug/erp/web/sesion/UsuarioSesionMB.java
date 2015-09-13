@@ -47,8 +47,9 @@ public class UsuarioSesionMB extends GenericManagedBean {
 	public void validaSesion(){
 		if(!DTOUtils.isPersistent(getUsuario())){
 			try {
-				if(isAutenticado())
-					getHttpServletRequest().logout();
+				if(isAutenticado()){
+					getHttpServletRequest().logout();					
+				}
 			} catch (ServletException e) {
 				addMessageError(e.getMessage());
 			}

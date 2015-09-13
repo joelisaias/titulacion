@@ -30,5 +30,10 @@ public interface ISequenceGenerators {
 	public static final String USUARIO="SEGUGUSUARIO";
 	public static final String USUARIO_ROL="SEGUGUSUARIO_ROL";
 	public static final String USUARIO_SUCURSAL="SEGUGUSUARIO_SUCURSAL";
+	
+	/*
+	 * COMPRAS
+	 */
+	public static final String ORDEN_COMPRA="COMPGORDEN_COMPRA";
 
 }

@@ -49,7 +49,7 @@ public class SeguridadServiceImpl implements SeguridadService {
 	}
 
 	public List<ModuloDTO> loadMenu(Object... filters) throws Exception {		
-		List<ModuloDTO> modulos=seguridadDao.loadMenu(Tipo.MODULO,filters);		
+		List<ModuloDTO> modulos=seguridadDao.loadMenu(Tipo.LIST_PARENTS,filters);		
 		return modulos;
 	}
 	
@@ -59,6 +59,18 @@ public class SeguridadServiceImpl implements SeguridadService {
 
 	public Collection<RolDTO> findRolesByUrl(String url) throws Exception{		
 		return seguridadDao.findRolesByUrl(url);
+	}
+	
+	public ModuloDTO obtenerModuloPorId(Long id) throws Exception{
+		return seguridadDao.findById(id, ModuloDTO.class);
+	}
+	
+	public ModuloDTO obtenerModuloBienvenidaPorUsuario(UsuarioSucursalDTO usuarioAutenticado) throws Exception{
+		return seguridadDao.obtenerModuloBienvenidaPorUsuario(usuarioAutenticado);
+	}
+	
+	public List<ModuloDTO> obtenerListModulos()throws Exception{
+		return seguridadDao.obtenerListModulos();
 	}
 
 }

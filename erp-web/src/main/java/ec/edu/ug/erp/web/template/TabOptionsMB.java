@@ -8,9 +8,6 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
-import org.primefaces.event.TabChangeEvent;
-import org.primefaces.event.TabCloseEvent;
-
 import ec.edu.ug.erp.dto.seguridad.ModuloDTO;
 import ec.edu.ug.erp.dto.seguridad.ModuloDTO.Tipo;
 import ec.edu.ug.erp.util.dto.generic.impl.GenericDTO.Estado;
@@ -30,9 +27,6 @@ public class TabOptionsMB extends TemplateMB {
 	protected void init(){
 		
 		ModuloDTO modulo;
-		ModuloDTO opcion;
-		
-		options=new ArrayList<ModuloDTO>();
 		
 		modulo=new ModuloDTO();		
 		modulo.setCodigo("DASH");
@@ -43,41 +37,46 @@ public class TabOptionsMB extends TemplateMB {
 		modulo.setNivel(1);
 		modulo.setOrden(0);
 		modulo.setAccionListar("/pages/general/dashboard.xhtml");		
-		modulo.setTipo(Tipo.OPCION);		
-		options.add(modulo);
+		modulo.setTipo(Tipo.OPCION);
+		addOption(modulo);
 		
-		opcion=new ModuloDTO();		
-		opcion.setCodigo("COMP");
-		opcion.setDescripcion("Pedidos de Compra");
-		opcion.setIcono("fa fa-external-link");
-		opcion.setEstado(Estado.ACTIVO);
-		opcion.setNivel(3);
-		opcion.setOrden(10);
-		opcion.setAccionListar("/pages/compras/pedido.xhtml");
-		opcion.setTipo(Tipo.OPCION);
-		options.add(opcion);
 		
+		System.out.println("SE BUSCARA WELCOMEPAGE");
+//		try {
+//			ModuloDTO modulo=seguridad.obtenerModuloBienvenidaPorUsuario(getUsuarioSesion().getUsuarioSucursal());
+//			
+//			System.out.println(modulo);
+//			addOption(modulo);
+//		} catch (Exception e) {
+//			addMessageError(e.getMessage());
+//		}		
 		
 
 	}
-	
-	
-	
-	public void onTabChange(TabChangeEvent event) {        
-        addMessageInfo("Tab Changed", "Active Tab: " + event.getTab().getTitle());
-    }
-         
-    public void onTabClose(TabCloseEvent event) {        
-        addMessageInfo("Tab Closed", "Closed tab: " + event.getTab().getTitle());
-    }
-    
+
     public void addOption(ModuloDTO option){
     	options=options!=null?options:new ArrayList<ModuloDTO>();
     	options.add(option);
     }
     
+    public void addTab(final Long id){
+    	try {
+    		ModuloDTO modulo=seguridad.obtenerModuloPorId(id);
+    		if(modulo!=null&& modulo.getAccionListar()!=null)
+    			addOption(modulo);
+		} catch (Exception e) {			
+			addMessageError(e.getMessage());
+		}
+    }
+    
+    public void removeTab(final Long id){
+    	System.out.println("removing...");
+    }
+    
 	
 	public List<ModuloDTO> getOptions() {
+		options=options!=null?options:new ArrayList<ModuloDTO>();
+		System.out.println(options);
 		return options;
 	}
 

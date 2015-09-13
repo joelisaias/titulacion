@@ -43,13 +43,13 @@ public class SeguridadDaoImpl extends GenericDAOImpl<GenericSeguridadDTO<?>> imp
 
 
 	@Transactional(readOnly=true)
-	public List<ModuloDTO> loadMenu(Tipo tipo, Object... filters)
+	public List<ModuloDTO> loadMenu(List<Tipo> tipo, Object... filters)
 			throws Exception {
 		List<ModuloDTO> modulos;
 		
 		DetachedCriteria criteria= DetachedCriteria.forClass(ModuloDTO.class,ALIAS_MODULO);
 		DAOUtils.addLeftJoins(criteria, FIELD_PADRE);
-		criteria.add(Restrictions.eq(FIELD_TIPO, tipo));
+		criteria.add(Restrictions.in(FIELD_TIPO, tipo));
 		criteria.add(Restrictions.eq(FIELD_ESTADO, Estado.ACTIVO));		
 		criteria.addOrder(Order.asc(FIELD_ORDEN));
 		
@@ -181,10 +181,7 @@ public class SeguridadDaoImpl extends GenericDAOImpl<GenericSeguridadDTO<?>> imp
 	}
 	
 	@Transactional(readOnly=true)
-	public UsuarioDTO findByUserName(String username) throws Exception{
-		
-		System.out.println("USER NAME FINDING... "+username);
-		
+	public UsuarioDTO findByUserName(String username) throws Exception{		
 		DetachedCriteria criteria=DetachedCriteria.forClass(UsuarioDTO.class,ALIAS_USUARIO);
 		criteria.add(Restrictions.eq(FIELD_CODIGO, username));
 		UsuarioDTO  usuario=findFirstByCriteria(criteria);
@@ -198,8 +195,6 @@ public class SeguridadDaoImpl extends GenericDAOImpl<GenericSeguridadDTO<?>> imp
 	}
 	
 	public Collection<RolDTO> findRolesByUrl(String url) throws Exception{
-		
-		System.out.println("URL: "+url);
 		
 		
 		DetachedCriteria criteriaRol=DetachedCriteria.forClass(RolDTO.class, ALIAS_ROL);
@@ -220,15 +215,53 @@ public class SeguridadDaoImpl extends GenericDAOImpl<GenericSeguridadDTO<?>> imp
 		criteriaRol.add(Subqueries.exists(criteriaTareaRol));
 		
 		List<RolDTO> roles=findByCriteria(criteriaRol);
-		System.out.println("******************INI ROLES**********************");
-		roles.forEach((r)->System.out.println(r));
-		System.out.println("******************FIN ROLES**********************");
 		
 		return roles;
 	}
 	
 	
+	public ModuloDTO obtenerModuloBienvenidaPorUsuario(UsuarioSucursalDTO usuarioAutenticado) throws Exception{
+		
+		if(!DTOUtils.isPersistent(usuarioAutenticado)){
+			return null;
+		}
+		
+		DetachedCriteria criteria=DetachedCriteria.forClass(ModuloDTO.class,ALIAS_MODULO);
+		DAOUtils.addLeftJoins(criteria, FIELD_PADRE);
+		criteria.add(Restrictions.eq(FIELD_TIPO, Tipo.WELCOMEPAGE));
+		criteria.add(Restrictions.eq(FIELD_ESTADO, GenericDTO.Estado.ACTIVO));
+		
+		DetachedCriteria criteriaTarea=DetachedCriteria.forClass(TareaDTO.class,ALIAS_TAREA);
+		DAOUtils.addInnerJoins(criteriaTarea, FIELD_MODULO);
+		criteriaTarea.add(Restrictions.eq(FIELD_ESTADO, GenericDTO.Estado.ACTIVO));
+		criteria.add(Restrictions.eqProperty(FIELD_MODULO+POINT+FIELD_ID, ALIAS_MODULO+POINT+FIELD_ID));
+		
+		DetachedCriteria criteriaTareaRol=DetachedCriteria.forClass(TareaRolDTO.class, ALIAS_TAREAROL);
+		DAOUtils.addInnerJoins(criteriaTareaRol,FIELD_TAREA,FIELD_ROL);
+		criteriaTareaRol.add(Restrictions.eq(FIELD_ESTADO, GenericDTO.Estado.ACTIVO));
+		criteriaTarea.add(Restrictions.eqProperty(FIELD_TAREA+POINT+FIELD_ID, ALIAS_TAREA+POINT+FIELD_ID));
+		
+		DetachedCriteria criteriaUsuarioRol=DetachedCriteria.forClass(UsuarioRolDTO.class, ALIAS_USUARIOROL);
+		DAOUtils.addInnerJoins(criteriaUsuarioRol, FIELD_USUARIO,FIELD_ROL);
+		criteriaUsuarioRol.add(Restrictions.eq(FIELD_USUARIO, usuarioAutenticado.getUsuario()));
+		criteriaUsuarioRol.add(Restrictions.eq(FIELD_ESTADO, GenericDTO.Estado.ACTIVO));
+		criteriaTareaRol.add(Restrictions.eqProperty(FIELD_ROL, ALIAS_TAREAROL+POINT+FIELD_ROL));
+		
+		criteriaTareaRol.add(Subqueries.exists(criteriaUsuarioRol));
+		criteriaTarea.add(Subqueries.exists(criteriaTareaRol));		
+		criteria.add(Subqueries.exists(criteriaTarea));
+		
+		
+		return findFirstByCriteria(criteria);
+	}
 	
+	
+	public List<ModuloDTO> obtenerListModulos()throws Exception{
+		DetachedCriteria criteria=DetachedCriteria.forClass(ModuloDTO.class,ALIAS_MODULO);
+		DAOUtils.addLeftJoins(criteria, FIELD_PADRE);
+		
+		return findByCriteria(criteria);
+	}
 
 	
 	

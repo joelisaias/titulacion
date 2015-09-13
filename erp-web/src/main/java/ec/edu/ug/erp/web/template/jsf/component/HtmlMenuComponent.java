@@ -40,6 +40,7 @@ public class HtmlMenuComponent extends UIComponentBase {
 	public static final String HTML_SPAN="span";
 	public static final String HTML_ATTR_ID="id";
 	public static final String HTML_ATTR_CLASS="class";
+	public static final String HTML_ATTR_STYLE="style";
 	public static final String HTML_ATTR_HREF="href";
 	
 	public static final String COL_MENU_CLASS="col-xs-2 col-sm-2";
@@ -48,12 +49,13 @@ public class HtmlMenuComponent extends UIComponentBase {
 	public static final String SUBMENU_TOGGLE_CLASS="dropdown-toggle";
 	public static final String SUBMENU_LABEL_CLASS="hidden-xs";
 	public static final String SUBMENU_CHILD_CLASS="dropdown-menu";
-	public static final String LINK_CLASS="ajax-link";
+	public static final String LINK_CLASS="option-link";
 	public static final String HREF_NONE="#";
 	public static final String STRING_EMPTY="";
 	public static final String ID_VALUE="sidebar-left";
 	public static final String DEFAULT_SUBMENU_ICON="fa fa-angle-down";
 	public static final String DEFAULT_MENUITEM_ICON="fa fa-angle-right";
+	public static final String STYLE_HIDDEN="display:none";
 	
 	
 	
@@ -146,7 +148,7 @@ public class HtmlMenuComponent extends UIComponentBase {
 				writer.startElement(HTML_LI, this);		
 				writer.startElement(HTML_A, this);
 				writer.writeAttribute(HTML_ATTR_CLASS, LINK_CLASS, null);
-				writer.writeAttribute(HTML_ATTR_HREF, item.getUrl()!=null?item.getUrl():HREF_NONE, null);
+				writer.writeAttribute(HTML_ATTR_HREF, HREF_NONE, null);
 				writer.startElement(HTML_I, this);
 				writer.writeAttribute(HTML_ATTR_CLASS, item.getIcon()!=null?item.getIcon():STRING_EMPTY, null);
 				writer.endElement(HTML_I);		
@@ -154,7 +156,11 @@ public class HtmlMenuComponent extends UIComponentBase {
 				if(item.getIcon()!=null)
 					writer.writeAttribute(HTML_ATTR_CLASS,SUBMENU_LABEL_CLASS, null);
 				writer.writeText(item.getValue()!=null?item.getValue():DEFAULT_MENUITEM_ICON, null);
-				writer.endElement(HTML_SPAN);		
+				writer.endElement(HTML_SPAN);
+				writer.startElement(HTML_SPAN, this);
+				writer.writeAttribute(HTML_ATTR_STYLE,STYLE_HIDDEN, null);
+				writer.writeText(item.getCommand(),null);
+				writer.endElement(HTML_SPAN);
 				writer.endElement(HTML_A);		
 				writer.endElement(HTML_LI);
 				

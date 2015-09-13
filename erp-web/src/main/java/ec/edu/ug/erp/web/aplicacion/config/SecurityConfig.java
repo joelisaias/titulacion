@@ -41,6 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements ICon
 		http.logout()
         .logoutRequestMatcher(new AntPathRequestMatcher(URL_LOGOUT))
         .invalidateHttpSession(true)
+        .logoutUrl(URL_LOGOUT)
         .logoutSuccessUrl(URL_LOGIN);
 		
 		AffirmativeBased affirmativeBased = new AffirmativeBased(Arrays.asList(new RoleVoter(),new WebExpressionVoter()));

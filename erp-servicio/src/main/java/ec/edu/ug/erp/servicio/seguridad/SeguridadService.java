@@ -27,5 +27,8 @@ public interface SeguridadService {
 	public List<ModuloDTO> loadMenu(Object... filters) throws Exception;
 	public List<ModuloDTO> obtenerOpcionesPermitidas(UsuarioSucursalDTO usuarioAutenticado) throws Exception;
 	public Collection<RolDTO> findRolesByUrl(String url) throws Exception;
+	public ModuloDTO obtenerModuloPorId(Long id) throws Exception;
+	public ModuloDTO obtenerModuloBienvenidaPorUsuario(UsuarioSucursalDTO usuarioAutenticado) throws Exception;
+	public List<ModuloDTO> obtenerListModulos()throws Exception;
 
 }

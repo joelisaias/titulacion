@@ -34,7 +34,10 @@ public interface ISequenceTables {
 	public static final String USUARIO_ROL="SEGUSUSUARIO_ROL";
 	public static final String USUARIO_SUCURSAL="SEGUSUSUARIO_SUCURSAL";
 	
-
+	/*
+	 * COMPRAS
+	 */
+	public static final String ORDEN_COMPRA="COMPSORDEN_COMPRA";
 
 	
 	
