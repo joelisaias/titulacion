@@ -160,7 +160,7 @@ $(document).ready(function () {
 		try{
 			var params= JSON.parse(sparams);
 			addTab(params.id);
-			$('div#main').toggleClass('sidebar-show');
+			//$('div#main').toggleClass('sidebar-show');
 		}catch(error){
 		console.log(error.message);
 		}
@@ -168,15 +168,7 @@ $(document).ready(function () {
 		
 	});
 	
-	$(".nav-tabs").on("click", "a", function(e){
-	      e.preventDefault();
-	      $(this).tab('show');
-	 });
 	
-	$('.close-tab').on('click', function(){
-		var keyRemove=$(this).attr('accesskey');
-		remTab(keyRemove);
-	});
 	
 });
 

@@ -4,7 +4,6 @@ import javax.inject.Inject;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import ec.edu.ug.erp.dto.seguridad.TareaDTO;
 import ec.edu.ug.erp.servicio.administracion.AdministracionService;
 import ec.edu.ug.erp.servicio.compras.ComprasService;
 import ec.edu.ug.erp.servicio.contabilidad.ContabilidadService;
@@ -32,6 +31,8 @@ public class TemplateMB extends GenericManagedBean {
 	@Autowired protected InventarioService 		inventario;
 		
 	@Inject private UsuarioSesionMB usuarioSesion;
+	
+	 
 	
 	
 

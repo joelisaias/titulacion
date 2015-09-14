@@ -6,7 +6,12 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
+
+import org.primefaces.event.TabChangeEvent;
+import org.primefaces.event.TabCloseEvent;
 
 import ec.edu.ug.erp.dto.seguridad.ModuloDTO;
 import ec.edu.ug.erp.dto.seguridad.ModuloDTO.Tipo;
@@ -28,7 +33,8 @@ public class TabOptionsMB extends TemplateMB {
 		
 		ModuloDTO modulo;
 		
-		modulo=new ModuloDTO();		
+		modulo=new ModuloDTO();
+		modulo.setId(1L);
 		modulo.setCodigo("DASH");
 		modulo.setDescripcion("Dashboard");
 		modulo.setIcono("fa fa-dashboard");
@@ -37,7 +43,7 @@ public class TabOptionsMB extends TemplateMB {
 		modulo.setNivel(1);
 		modulo.setOrden(0);
 		modulo.setAccionListar("/pages/general/dashboard.xhtml");		
-		modulo.setTipo(Tipo.OPCION);
+		modulo.setTipo(Tipo.WELCOMEPAGE);
 		addOption(modulo);
 		
 		
@@ -70,7 +76,29 @@ public class TabOptionsMB extends TemplateMB {
     }
     
     public void removeTab(final Long id){
-    	System.out.println("removing...");
+    	System.out.println("removing..." +id);
+    	addMessageInfo("removing..." +id);
+    	
+    	int index=0;
+    	for(ModuloDTO opcion:getOptions()){
+    		if(opcion.getId().equals(id))    		
+    			getOptions().remove(index);
+    		index++;
+    	}
+    	
+    }
+    
+    public void onTabChange(TabChangeEvent event) {
+        FacesMessage msg = new FacesMessage("Tab Changed", "Active Tab: " + event.getTab() );
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+        
+       
+        
+    }
+         
+    public void onTabClose(TabCloseEvent event) {
+        FacesMessage msg = new FacesMessage("Tab Closed", "Closed tab: " + event.getTab());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
     
 	

@@ -1,46 +1,31 @@
 <!DOCTYPE html>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:pe="http://primefaces.org/ui/extensions" 
+	xmlns:pe="http://primefaces.org/ui/extensions"
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:of="http://omnifaces.org/functions"
 	template="/WEB-INF/templates/tmpl_principal.xhtml">
 	<ui:define name="lienzo">
-	
-	<p:growl autoUpdate="true"/>
-	<ui:include src="/WEB-INF/templates/segmentos/tmpl_commands.xhtml"/>
-	
-		<p:outputPanel id="pagesTarget" >		
-			<div class="row">
-				<div id="tabs" class="col-xs-12">
 
-					<ul class="nav nav-tabs" role="tablist">
-						<ui:repeat var="option" value="#{tabOptionsMB.options}">
+		<p:growl autoUpdate="true" />
+		<ui:include src="/WEB-INF/templates/segmentos/tmpl_commands.xhtml" />
 
-							<li role="presentation"><a href="##{option.codigo}"
-								aria-controls="#{option.codigo}" role="tab" data-toggle="tab">
-									<i class="#{option.icono}"></i> #{option.descripcion}
-									<span class="#{option.tipo.opcion?'fa fa-close close-tab':''}" accesskey="#{option.id}" ></span>
-							</a></li>
-
-						</ui:repeat>
-					</ul>
-
-				</div>
-			</div>
-
-			<div class="tab-content">
-				<ui:repeat var="option" value="#{tabOptionsMB.options}">
-
-					<div role="tabpanel" class="tab-pane " id="#{option.codigo}">
-						<o:resourceInclude path="#{option.accionListar}" />
-					</div>
-				</ui:repeat>
-			</div>
-			</p:outputPanel>
+		<p:outputPanel id="pagesTarget">
+			<p:tabView scrollable="true" dynamic="true" cache="true"
+				style="border: none; padding: 0px 0px 0px 0px; marging: 0px 0px 0px 0px;">
+				<p:ajax event="tabClose" listener="#{tabOptionsMB.onTabClose}"
+					update="pagesTarget" />
+				<c:forEach items="#{tabOptionsMB.options}" var="option">
+					<p:tab title="#{option.descripcion}"
+						closable="#{option.tipo.opcion}">
+						<ui:include src="#{option.accionListar}" />
+					</p:tab>
+				</c:forEach>
+			</p:tabView>
+		</p:outputPanel>
 	</ui:define>
-	
 </ui:composition>
