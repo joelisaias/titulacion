@@ -20,7 +20,7 @@
 				<p:ajax event="tabClose" listener="#{tabOptionsMB.onTabClose}"
 					update="pagesTarget" />
 				<c:forEach items="#{tabOptionsMB.options}" var="option">
-					<p:tab title="#{option.descripcion}"
+					<p:tab title="#{option.descripcion}" titleStyleClass="tab-title"
 						closable="#{option.tipo.opcion}">
 						<ui:include src="#{option.accionListar}" />
 					</p:tab>

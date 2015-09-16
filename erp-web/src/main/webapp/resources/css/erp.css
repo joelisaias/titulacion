@@ -99,7 +99,7 @@ a.show-sidebar:hover {
   overflow: hidden;
   padding-right: 0px;
   padding-left:  0px;
-  font-size: 10px;
+  font-size: 11px;
   /* -webkit-transition: 0.1s;
   -moz-transition: 0.1s;
   -o-transition: 0.1s;
@@ -692,10 +692,20 @@ ul.DTTT_dropdown.dropdown-menu > li:hover > a {
 }
 
 .ui-tabs-selected.ui-state-active{
-background: #505559; 
-border: none;	
-text-align: center;
-color:#353535;
+	border: 1px solid #93c3cd;
+    background: #93c3cd url("#{request.contextPath}/javax.faces.resource/images/ui-bg_diagonals-small_50_93c3cd_40x40.png.jsf?ln=primefaces-hot-sneaks") 50% 50% repeat;
+    font-weight: bold;
+    color: #333333;	
+	
+}
+
+.ui-tabs .ui-tabs-nav li> .ui-corner-top .tab-title .ui-state-default {
+    
+    background: #505559 ; 
+	border: none;	
+	text-align: center;
+	color:#333333;
+    
 }
 
 .ui-tabs-panel {

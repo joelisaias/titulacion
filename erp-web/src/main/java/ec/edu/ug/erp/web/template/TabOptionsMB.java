@@ -20,7 +20,6 @@ import ec.edu.ug.erp.util.dto.generic.impl.GenericDTO.Estado;
 @Named("tabOptionsMB")
 @SessionScoped
 public class TabOptionsMB extends TemplateMB {
-
 	/**
 	 * 
 	 */
@@ -67,7 +66,7 @@ public class TabOptionsMB extends TemplateMB {
     
     public void addTab(final Long id){
     	try {
-    		ModuloDTO modulo=seguridad.obtenerModuloPorId(id);
+    		ModuloDTO modulo=seguridadService.obtenerModuloPorId(id);
     		if(modulo!=null&& modulo.getAccionListar()!=null)
     			addOption(modulo);
 		} catch (Exception e) {			
