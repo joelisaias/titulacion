@@ -20,15 +20,15 @@ public class TemplateMB extends GenericManagedBean {
 
 	private static final long serialVersionUID = 9127180840504035585L;
 
-	@Autowired protected SeguridadService 		seguridad;	
-	@Autowired protected AdministracionService 	administracion;	
-	@Autowired protected GeneralService 		general;	
-	@Autowired protected RrhhService 			rrhh;
-	@Autowired protected ComprasService 		compras;
-	@Autowired protected FacturacionService 	facturacion;
-	@Autowired protected ContabilidadService 	contabilidad;
-	@Autowired protected GerencialService 		gerencial;
-	@Autowired protected InventarioService 		inventario;
+	@Autowired protected SeguridadService 		seguridadService;	
+	@Autowired protected AdministracionService 	administracionService;	
+	@Autowired protected GeneralService 		generalService;	
+	@Autowired protected RrhhService 			rrhhService;
+	@Autowired protected ComprasService 		comprasService;
+	@Autowired protected FacturacionService 	facturacionService;
+	@Autowired protected ContabilidadService 	contabilidadService;
+	@Autowired protected GerencialService 		gerencialService;
+	@Autowired protected InventarioService 		inventarioService;
 		
 	@Inject private UsuarioSesionMB usuarioSesion;
 	

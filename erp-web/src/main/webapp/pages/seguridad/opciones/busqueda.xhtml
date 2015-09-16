@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
+	template="/WEB-INF/templates/contenido/tmpl_busqueda.xhtml">
+
+	<ui:param name="mb" 	value="#{opcionMB}" />
+	<ui:param name="filtro" value="#{opcionMB.searchDTO}" />
+
+	<ui:define name="filter">
+		<ui:include src="busqueda_filtros.xhtml"/>
+	</ui:define>
+	
+	<ui:define name="result">
+		<ui:include src="busqueda_resultados.xhtml"/>		
+	</ui:define>
+
+	
+
+</ui:composition>
