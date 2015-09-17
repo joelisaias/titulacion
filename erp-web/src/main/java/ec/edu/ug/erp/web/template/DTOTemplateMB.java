@@ -2,7 +2,6 @@ package ec.edu.ug.erp.web.template;
 
 import java.util.List;
 
-import ec.edu.ug.erp.dto.seguridad.ModuloDTO;
 import ec.edu.ug.erp.util.dto.generic.impl.GenericDTO;
 
 public abstract class DTOTemplateMB<DTO extends GenericDTO<?>> extends TemplateMB {
