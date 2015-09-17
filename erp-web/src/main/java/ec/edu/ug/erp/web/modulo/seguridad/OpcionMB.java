@@ -1,5 +1,7 @@
 package ec.edu.ug.erp.web.modulo.seguridad;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
@@ -29,6 +31,17 @@ public class OpcionMB extends SeguridadMB<ModuloDTO> {
 	@Override
 	public void instanceSearchDTO() {
 		searchDTO  = new ModuloDTO();		
+	}
+
+	@Override
+	public List<ModuloDTO> loadMainResult(ModuloDTO filter) {
+		List<ModuloDTO> result=null;
+		try {
+			result= seguridadService.obtenerListModulos(filter);
+		} catch (Exception e) {
+			addMessageError(e.getMessage());
+		}
+		return result;
 	}
 
 	

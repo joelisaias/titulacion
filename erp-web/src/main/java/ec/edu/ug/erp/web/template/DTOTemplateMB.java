@@ -1,5 +1,8 @@
 package ec.edu.ug.erp.web.template;
 
+import java.util.List;
+
+import ec.edu.ug.erp.dto.seguridad.ModuloDTO;
 import ec.edu.ug.erp.util.dto.generic.impl.GenericDTO;
 
 public abstract class DTOTemplateMB<DTO extends GenericDTO<?>> extends TemplateMB {
@@ -8,6 +11,8 @@ public abstract class DTOTemplateMB<DTO extends GenericDTO<?>> extends TemplateM
 	 
 	protected DTO searchDTO;
 	protected DTO currentDTO;
+	
+	private List<DTO> searchResult; 
 	
 	/**
 	 * Instanciar serachDTO & currentDTO
@@ -38,6 +43,20 @@ public abstract class DTOTemplateMB<DTO extends GenericDTO<?>> extends TemplateM
 	 */
 	public abstract void instanceSearchDTO();
 	
+	/**
+	 * TODO agregar comentario
+	 * 
+	 * @author Joel Alvarado
+	 * @return
+	 */
+	public abstract List<DTO> loadMainResult(DTO filter);
+	
+	
+	
+	
+	
+	
+	
 	
 	public DTO getSearchDTO() {
 		return searchDTO;
@@ -53,6 +72,10 @@ public abstract class DTOTemplateMB<DTO extends GenericDTO<?>> extends TemplateM
 	
 	public void setCurrentDTO(DTO currentDTO) {
 		this.currentDTO = currentDTO;
+	}
+
+	public List<DTO> getSearchResult() {
+		return searchResult!=null?searchResult:loadMainResult(getSearchDTO());
 	}
 		
 }

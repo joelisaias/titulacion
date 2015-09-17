@@ -69,8 +69,8 @@ public class SeguridadServiceImpl implements SeguridadService {
 		return seguridadDao.obtenerModuloBienvenidaPorUsuario(usuarioAutenticado);
 	}
 	
-	public List<ModuloDTO> obtenerListModulos()throws Exception{
-		return seguridadDao.obtenerListModulos();
+	public List<ModuloDTO> obtenerListModulos(ModuloDTO filter)throws Exception{
+		return seguridadDao.obtenerListModulos(filter);
 	}
 
 }

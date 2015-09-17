@@ -256,9 +256,21 @@ public class SeguridadDaoImpl extends GenericDAOImpl<GenericSeguridadDTO<?>> imp
 	}
 	
 	
-	public List<ModuloDTO> obtenerListModulos()throws Exception{
+	/**
+	 * Metodo para obtener la lista de opciones con opcion de filtrar
+	 * 
+	 * @author Joel Alvarado
+	 * @since 2015-09-16
+	 */
+	public List<ModuloDTO> obtenerListModulos(ModuloDTO filter)throws Exception{
 		DetachedCriteria criteria=DetachedCriteria.forClass(ModuloDTO.class,ALIAS_MODULO);
 		DAOUtils.addLeftJoins(criteria, FIELD_PADRE);
+		
+		if(filter!=null){
+			if(filter.getId()!=null) {criteria.add(Restrictions.eq(FIELD_ID, filter.getId()));}
+			if(filter.getCodigo()!=null) {criteria.add(Restrictions.like(FIELD_CODIGO, filter.getCodigo(),MatchMode.ANYWHERE));}
+			if(filter.getDescripcion()!=null) {criteria.add(Restrictions.like(FIELD_DESCRIPCION, filter.getDescripcion(),MatchMode.ANYWHERE));}
+		}
 		
 		return findByCriteria(criteria);
 	}
