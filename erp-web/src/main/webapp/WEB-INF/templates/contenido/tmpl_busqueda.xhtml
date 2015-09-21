@@ -4,12 +4,13 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:pe="http://primefaces.org/ui/extensions">
 
 
-	<p:layout style="min-width:400px;min-height:700px;">
+	<p:layout id="lySearchBody" style="min-width:400px;min-height:700px;">
 
-		<p:layoutUnit position="center"
+		<p:layoutUnit position="center" id="lyCenter"
 			style="border: none; padding: 0px 0px 0px 0px; marging: 0px 0px 0px 0px;">
 			<h:form>
 				<p:toolbar id="tools">
@@ -43,28 +44,111 @@
 
 				</p:toolbar>
 			</h:form>
-			<ui:insert name="result">
+			<h:panelGroup id="outSearch" styleClass="searchResultArea">
+				<ui:insert name="result">
                 center content
                 </ui:insert>
+			</h:panelGroup>
 		</p:layoutUnit>
 
-		<p:layoutUnit position="east" resizable="false" size="300"
-			collapsible="true"
-			style=" padding: 0px 0px 0px 0px; marging: 0px 0px 0px 0px; border-top:none; border-bottom:none; border-right:none;"
-			minSize="40" maxSize="300">
-			<h:form>
-				<p:toolbar id="toolsSearch">
-					<f:facet name="left">
-						<p:commandButton type="button" value="Buscar" title="Buscar"
-							icon="ui-icon-search" />
-					</f:facet>
+		<c:if test="#{mb.searchTemplate.habilitaNorte}">
+			<p:layoutUnit id="lyNorth" position="north" resizable="false"
+				size="150" rendered="#{mb.searchTemplate.habilitaNorte}"
+				collapsible="true"
+				style=" padding: 0px 0px 0px 0px; marging: 0px 0px 0px 0px; border-top:none; border-bottom:none; border-right:none;"
+				minSize="40" maxSize="300">
+				<h:form id="frmFilterN">
+					<p:toolbar id="toolsSearchN">
+						<f:facet name="left">
+							<p:commandButton id="btnSearch1" value="Buscar" title="Buscar"
+								actionListener="#{mb.actionSearch}" ajax="true"
+								update="#{p:component('outSearch')}" partialSubmit="true"
+								process="@form,@this" icon="fa fa-search" />
+						</f:facet>
 
-				</p:toolbar>
-			</h:form>
-			<ui:insert name="filter">
-                filter content
+					</p:toolbar>
+
+
+					<p:panel id="pnlFilterN" styleClass="filterArea"
+						style="border:none;">
+
+
+
+						<ui:insert name="filter">
+                filter east content
          </ui:insert>
-		</p:layoutUnit>
+
+
+					</p:panel>
+				</h:form>
+
+			</p:layoutUnit>
+		</c:if>
+		<c:if test="#{mb.searchTemplate.habilitaEste}">
+			<p:layoutUnit id="lyEast" position="east" resizable="false"
+				size="300" rendered="#{mb.searchTemplate.habilitaEste}"
+				collapsible="true"
+				style=" padding: 0px 0px 0px 0px; marging: 0px 0px 0px 0px; border-top:none; border-bottom:none; border-right:none;"
+				minSize="40" maxSize="300">
+				<h:form id="frmFilterE">
+					<p:toolbar id="toolsSearchE">
+						<f:facet name="left">
+							<p:commandButton id="btnSearch2" value="Buscar" title="Buscar"
+								actionListener="#{mb.actionSearch}" ajax="true"
+								partialSubmit="true" update="#{p:component('outSearch')}"
+								process="@form,@this" icon="fa fa-search" />
+						</f:facet>
+
+					</p:toolbar>
+					<p:panel id="pnlFilterE" styleClass="filterArea"
+						style="border:none;">
+
+
+						<ui:insert name="filter">
+                filter east content
+         </ui:insert>
+					</p:panel>
+
+
+				</h:form>
+
+			</p:layoutUnit>
+		</c:if>
+		<c:if test="#{mb.searchTemplate.habilitaOeste}">
+			<p:layoutUnit id="lyWest" position="west" resizable="false"
+				size="300" rendered="#{mb.searchTemplate.habilitaOeste},@this"
+				collapsible="true"
+				style=" padding: 0px 0px 0px 0px; marging: 0px 0px 0px 0px; border-top:none; border-bottom:none; border-right:none;"
+				minSize="40" maxSize="300">
+				<h:form id="frmFilterO">
+					<p:toolbar id="toolsSearchO">
+						<f:facet name="left">
+							<p:commandButton id="btnSearch3" value="Buscar" title="Buscar"
+								actionListener="#{mb.actionSearch}" ajax="true"
+								update="#{p:component('outSearch')}" partialSubmit="true"
+								process="@form,@this" icon="fa fa-search" />
+						</f:facet>
+
+					</p:toolbar>
+
+
+					<p:panel id="pnlFilterO" styleClass="filterArea"
+						style="border:none;">
+
+
+
+
+						<ui:insert name="filter">
+                filter east content
+         </ui:insert>
+
+					</p:panel>
+				</h:form>
+			</p:layoutUnit>
+		</c:if>
+
+
+
 
 
 	</p:layout>

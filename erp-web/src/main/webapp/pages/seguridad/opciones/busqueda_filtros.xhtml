@@ -7,10 +7,25 @@
 	xmlns:pe="http://primefaces.org/ui/extensions"
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:of="http://omnifaces.org/functions">
-	<h:panelGrid columns="2">
-		<p:outputLabel  for="filDesc" value="Descripcion"/>
-		<p:inputText id="filDesc" value="#{filtro.descripcion}"/>	
-	</h:panelGrid>
 
-	
+	<div class="input-group input-sm">
+		<span class="input-group-addon">#</span>
+		<h:inputText id="filId" value="#{filtro.id}" styleClass="form-control"	placeholder="Id" converter="javax.faces.Integer">
+		<f:convertNumber type="number" for="filId"  integerOnly="true"/>
+		</h:inputText>
+	</div>
+
+	<div class="input-group input-sm">
+		<span class="input-group-addon"><i class="fa fa-font"></i></span>
+		<h:inputText id="filCod" value="#{filtro.codigo}" immediate="true"
+			styleClass="form-control" placeholder="Codigo" />
+	</div>
+
+	<div class="input-group input-sm">
+		<span class="input-group-addon"><i class="fa fa-font"></i></span>
+		<h:inputText id="filDesc" value="#{filtro.descripcion}" immediate="true"
+			styleClass="form-control" placeholder="Descripcion" />
+	</div>
+
+
 </ui:composition>

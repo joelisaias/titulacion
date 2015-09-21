@@ -15,7 +15,7 @@
 	<h:outputStylesheet library="plugins" name="bootstrap/bootstrap.min.css" />
 	<h:outputStylesheet library="plugins" name="bootstrap/bootstrap-theme.min.css" />
 	<h:outputStylesheet library="plugins" name="jquery-ui/jquery-ui.min.css" />
-	<h:outputStylesheet library="plugins" name="font-awesome-4.4.0/css/font-awesome.min.css" />
+	<h:outputStylesheet library="plugins" name="font-awesome/css/font-awesome.min.css" />
 	<h:outputStylesheet library="css" 	  name="app.css" />
 
 </h:head>
@@ -35,9 +35,7 @@
 							</h:outputLabel>
 							<h:inputText id="username" styleClass="form-control"
 								required="true" value="#{loginMB.userName}" 
-								requiredMessage="Ingrese Usuario" name="inTxtUser" >
-								<p:watermark value="Usuario" for="username" />
-							</h:inputText>
+								requiredMessage="Ingrese Usuario" name="inTxtUser" placeholder="Usuario" />
 
 						</div>
 						<div class="input-group input-sm">
@@ -47,10 +45,7 @@
 							</h:outputLabel>
 							<h:inputSecret id="password" styleClass="form-control"
 								required="true" value="#{loginMB.password}"
-								requiredMessage="Ingreses Clave" name="inTxtPasswordNm">
-								<p:watermark value="Clave" for="password" />
-							</h:inputSecret>
-
+								requiredMessage="Ingreses Clave" name="inTxtPasswordNm" placeholder="Clave"/>
 						</div>
 
 						<div class="form-actions">

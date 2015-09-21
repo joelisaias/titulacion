@@ -17,7 +17,7 @@
 <h:outputStylesheet library="plugins" 	name="bootstrap/bootstrap.min.css" />
 <h:outputStylesheet library="plugins" 	name="bootstrap/bootstrap-theme.min.css" />
 <!-- <h:outputStylesheet library="plugins" 	name="jquery-ui/jquery-ui.min.css" /> -->
-<h:outputStylesheet library="plugins" 	name="font-awesome-4.4.0/css/font-awesome.min.css" />
+<h:outputStylesheet library="plugins" 	name="font-awesome/css/font-awesome.min.css" />
 <!-- <h:outputStylesheet library="plugins" 	name="fancybox/jquery.fancybox.css" />
 <h:outputStylesheet library="plugins" 	name="fullcalendar/fullcalendar.css" />
 <h:outputStylesheet library="plugins" 	name="xcharts/xcharts.min.css" />
@@ -29,6 +29,7 @@
 
 </h:head>
 <h:body>
+<f:view>
 <ui:include src="/WEB-INF/templates/segmentos/tmpl-seg-header.xhtml" />
 	<!--Start Container-->
 	<div  id="main" class="container-fluid">
@@ -61,7 +62,6 @@
 	<h:outputScript library="plugins" 		name="tinymce/tinymce.min.js" />
 	<h:outputScript library="plugins" 		name="tinymce/jquery.tinymce.min.js" /> -->
 	<h:outputScript library="js" 			name="erp.js" />
-	
+	</f:view>
 </h:body>
-
 </html>

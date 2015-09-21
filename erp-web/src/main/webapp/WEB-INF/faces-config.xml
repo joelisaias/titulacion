@@ -17,8 +17,10 @@
 		</view-handler>
 		<el-resolver>
 			org.springframework.web.jsf.el.SpringBeanFacesELResolver
-		</el-resolver>
-
+		</el-resolver>		
+		<factory>
+		     <render-kit-factory>org.omnifaces.renderkit.Html5RenderKitFactory</render-kit-factory>
+		 </factory>
 		<locale-config>
 			<default-locale>es</default-locale>
 			<supported-locale>en</supported-locale>

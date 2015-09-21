@@ -25,7 +25,14 @@
     <param-name>primefaces.FONT_AWESOME</param-name>
     <param-value>true</param-value>
   </context-param>
-    	<context-param>
+  <context-param>
+     <param-name>org.omnifaces.HTML5_RENDER_KIT_PASSTHROUGH_ATTRIBUTES</param-name>
+     <param-value>
+         javax.faces.component.UIInput=x-webkit-speech,x-webkit-grammar;
+         javax.faces.component.UIComponent=contenteditable,draggable
+       </param-value>
+ </context-param>  
+  <context-param>
 		<param-name>facelets.LIBRARIES</param-name>
 		<param-value>/WEB-INF/components/erp.taglib.xml;</param-value>
 	</context-param>  

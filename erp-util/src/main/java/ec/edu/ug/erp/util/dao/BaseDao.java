@@ -44,6 +44,10 @@ public interface BaseDao<X extends GenericDTO<?>, E extends Serializable> {
     public <T extends X> List<Map<String, Object>> findMapByQuery(String queryString) throws Exception;
 
     public <T extends X> List<T> findByCriteria(DetachedCriteria criteria) throws Exception;
+    
+    public <T extends X> List<T> findByCriteria(DetachedCriteria criteria,PaginationTemplate pagination) throws Exception;
+    
+    public <T extends X> T findFirstByCriteria(final DetachedCriteria criteria)throws Exception;
 
     public <T extends X> T merge(T detachedInstance) throws Exception;
 

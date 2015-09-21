@@ -2389,4 +2389,16 @@ border-radius: 50%;}
   #dashboard_links .nav-pills > li.active > a:before {
     display: none;
   }
+  
+  .filterArea{
+	  margin: 2px 2px 2px 2px;
+	  padding: 2px 2px 2px 2px;
+	  border: none;
+  }
+  
+  .searchResultArea{
+	  margin: 2px 2px 2px 2px;
+	  padding: 2px 2px 2px 2px;
+  }
+  
 }

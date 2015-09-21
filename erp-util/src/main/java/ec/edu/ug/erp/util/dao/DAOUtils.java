@@ -1,10 +1,15 @@
 package ec.edu.ug.erp.util.dao;
 
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.lang.reflect.Field;
 
 import org.hibernate.FetchMode;
 import org.hibernate.Hibernate;
+import org.hibernate.HibernateException;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.sql.JoinType;
@@ -70,6 +75,23 @@ public class DAOUtils {
                     System.err.println("No se puede forzar la carga del la colleccion: " + field.getName());
                 }
             }
+        }
+    }
+	
+	public static DetachedCriteria copyCriteria(DetachedCriteria criteria) {
+        try {
+            ByteArrayOutputStream baostream = new ByteArrayOutputStream();
+            ObjectOutputStream oostream = new ObjectOutputStream(baostream);
+            oostream.writeObject(criteria);
+            oostream.flush();
+            oostream.close();
+            ByteArrayInputStream baistream = new ByteArrayInputStream(baostream.toByteArray());
+            ObjectInputStream oistream = new ObjectInputStream(baistream);
+            DetachedCriteria copy = (DetachedCriteria)oistream.readObject();
+            oistream.close();            
+            return copy;
+        } catch(Throwable t) {
+            throw new HibernateException(t);
         }
     }
 	

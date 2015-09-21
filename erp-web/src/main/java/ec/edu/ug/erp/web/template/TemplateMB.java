@@ -4,6 +4,7 @@ import javax.inject.Inject;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import ec.edu.ug.erp.dto.seguridad.ModuloDTO;
 import ec.edu.ug.erp.servicio.administracion.AdministracionService;
 import ec.edu.ug.erp.servicio.compras.ComprasService;
 import ec.edu.ug.erp.servicio.contabilidad.ContabilidadService;
@@ -32,7 +33,12 @@ public class TemplateMB extends GenericManagedBean {
 		
 	@Inject private UsuarioSesionMB usuarioSesion;
 	
-	 
+	private ModuloDTO opcionActual;
+	
+	  
+	private TipoTemplate searchTemplate;
+	private TipoTemplate editTemplate;
+	
 	
 	
 
@@ -43,6 +49,58 @@ public class TemplateMB extends GenericManagedBean {
 
 	public void setUsuarioSesion(UsuarioSesionMB usuarioSesion) {
 		this.usuarioSesion = usuarioSesion;
+	}
+	
+	
+	public TipoTemplate getSearchTemplate() {
+		return searchTemplate;
+	}
+	
+	public void setSearchTemplate(TipoTemplate searchTemplate) {
+		this.searchTemplate = searchTemplate;
+	}
+	
+	public TipoTemplate getEditTemplate() {
+		return editTemplate;
+	}
+	
+	public void setEditTemplate(TipoTemplate editTemplate) {
+		this.editTemplate = editTemplate;
+	}
+	
+	public ModuloDTO getOpcionActual() {
+		return opcionActual;
+	}
+
+	public void setOpcionActual(ModuloDTO opcionActual) {
+		this.opcionActual = opcionActual;
+	}
+
+	
+	public enum TipoTemplate{
+		 CENTRO_NORTE("CN")
+		,CENTRO_ESTE("CE")
+		,CENTRO_OESTE("CO")
+		,CENTRO_SUR("CS")
+		,CENTRO_NORTE_SUR("CNS")
+		,CENTRO_NORTE_ESTE("CNE")
+		,CENTRO_NORTE_OESTE("CNO")
+		 ;
+		 
+		 private String value;
+		 
+		 private TipoTemplate(String value) {
+			this.value=value;
+		}
+		
+		public String getValue() {
+			return value;
+		}
+		 
+		public boolean isHabilitaNorte(){return this.equals(CENTRO_NORTE)||this.equals(CENTRO_NORTE_SUR)||this.equals(CENTRO_NORTE_ESTE)||this.equals(CENTRO_NORTE_OESTE);}
+		public boolean isHabilitaEste (){return this.equals(CENTRO_ESTE)||this.equals(CENTRO_NORTE_ESTE);}
+		public boolean isHabilitaOeste(){return this.equals(CENTRO_OESTE)||this.equals(CENTRO_NORTE_OESTE);}
+		public boolean isHabilitaSur  (){return this.equals(CENTRO_SUR)||this.equals(CENTRO_NORTE_SUR);}
 	}
 		
 }

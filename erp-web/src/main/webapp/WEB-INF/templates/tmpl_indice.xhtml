@@ -15,12 +15,12 @@
 		<ui:include src="/WEB-INF/templates/segmentos/tmpl_commands.xhtml" />
 
 		<p:outputPanel id="pagesTarget">
-			<p:tabView scrollable="true" dynamic="true" cache="true"
+			<p:tabView id="tbvOptionsViewer" scrollable="true" dynamic="true" cache="true"
 				style="border: none; padding: 0px 0px 0px 0px; marging: 0px 0px 0px 0px;">
 				<p:ajax event="tabClose" listener="#{tabOptionsMB.onTabClose}"
 					update="pagesTarget" />
 				<c:forEach items="#{tabOptionsMB.options}" var="option">
-					<p:tab title="#{option.descripcion}" titleStyleClass="tab-title"
+					<p:tab id="tabOp#{option.codigo}" title="#{option.descripcion}" titleStyleClass="tab-title"
 						closable="#{option.tipo.opcion}">
 						<ui:include src="#{option.accionListar}" />
 					</p:tab>

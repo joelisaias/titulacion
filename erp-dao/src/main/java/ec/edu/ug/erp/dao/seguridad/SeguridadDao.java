@@ -11,6 +11,7 @@ import ec.edu.ug.erp.dto.seguridad.ModuloDTO.Tipo;
 import ec.edu.ug.erp.dto.seguridad.UsuarioDTO;
 import ec.edu.ug.erp.dto.seguridad.UsuarioSucursalDTO;
 import ec.edu.ug.erp.util.dao.GenericDAO;
+import ec.edu.ug.erp.util.dao.PaginationTemplate;
 
 
 /**
@@ -32,6 +33,6 @@ public interface SeguridadDao extends GenericDAO<GenericSeguridadDTO<?>>{
 	public UsuarioDTO findByUserName(String username) throws Exception;
 	public Collection<RolDTO> findRolesByUrl(String url) throws Exception;
 	public ModuloDTO obtenerModuloBienvenidaPorUsuario(UsuarioSucursalDTO usuarioAutenticado) throws Exception;
-	public List<ModuloDTO> obtenerListModulos(ModuloDTO filter)throws Exception;
+	public List<ModuloDTO> obtenerListModulos(ModuloDTO filter,PaginationTemplate pagination)throws Exception;
 	
 }

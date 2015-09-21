@@ -14,6 +14,7 @@ import ec.edu.ug.erp.dto.seguridad.RolDTO;
 import ec.edu.ug.erp.dto.seguridad.UsuarioDTO;
 import ec.edu.ug.erp.dto.seguridad.UsuarioSucursalDTO;
 import ec.edu.ug.erp.servicio.seguridad.SeguridadService;
+import ec.edu.ug.erp.util.dao.PaginationTemplate;
 /**
  * Implementacion de Capa de servicio para modulo de seguridad
  * 
@@ -69,8 +70,8 @@ public class SeguridadServiceImpl implements SeguridadService {
 		return seguridadDao.obtenerModuloBienvenidaPorUsuario(usuarioAutenticado);
 	}
 	
-	public List<ModuloDTO> obtenerListModulos(ModuloDTO filter)throws Exception{
-		return seguridadDao.obtenerListModulos(filter);
+	public List<ModuloDTO> obtenerListModulos(ModuloDTO filter,PaginationTemplate pagination)throws Exception{
+		return seguridadDao.obtenerListModulos(filter,pagination);
 	}
 
 }

@@ -1,6 +1,7 @@
 package ec.edu.ug.erp.util.dao.impl;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +10,7 @@ import org.hibernate.LockMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
@@ -16,6 +18,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import ec.edu.ug.erp.util.dao.BaseDao;
+import ec.edu.ug.erp.util.dao.DAOUtils;
+import ec.edu.ug.erp.util.dao.PaginationTemplate;
 import ec.edu.ug.erp.util.dto.generic.impl.GenericDTO;
 
 /**
@@ -170,6 +174,22 @@ public abstract class BaseDaoHibernate<X extends GenericDTO<?>, E extends Serial
 		} catch (final Exception e) {
 			throw e;
 		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public <T extends X> List<T> findByCriteria(DetachedCriteria criteria,PaginationTemplate pagination) throws Exception {
+		List<T> results=new ArrayList<T>();
+		DetachedCriteria criteriaRows= DAOUtils.copyCriteria(criteria);
+		Number totalRows=0;
+		if(criteriaRows!=null){
+			criteriaRows.setProjection(Projections.rowCount());
+			totalRows=(Number)criteriaRows.getExecutableCriteria(getActiveSession()).uniqueResult();
+		}
+		pagination.setRowCount(totalRows==null?0:totalRows.intValue());
+		results=(List<T>)getHibernateTemplate().findByCriteria(criteria, pagination.getFirstRow(),pagination.getPageSize());		
+		
+		return results;
 	}
 	
 	public <T extends X> T findFirstByCriteria(final DetachedCriteria criteria)

@@ -48,11 +48,13 @@ public abstract class GenericDTO<DTO extends GenericDTO<DTO>> implements IGeneri
 
 	public abstract void setCodigo(String codigo);
 
-	public String getDescripcion() {
+	public String getDescripcion() {		
+		System.out.println("get description "+descripcion);
 		return descripcion;
 	}
 
 	public void setDescripcion(String descripcion) {
+		System.out.println("set description "+descripcion);
 		this.descripcion = descripcion;
 	}
 

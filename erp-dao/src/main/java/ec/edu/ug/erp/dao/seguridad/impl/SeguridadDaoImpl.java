@@ -25,6 +25,7 @@ import ec.edu.ug.erp.dto.seguridad.UsuarioRolDTO;
 import ec.edu.ug.erp.dto.seguridad.UsuarioSucursalDTO;
 import ec.edu.ug.erp.util.crypto.CryptoUtils;
 import ec.edu.ug.erp.util.dao.DAOUtils;
+import ec.edu.ug.erp.util.dao.PaginationTemplate;
 import ec.edu.ug.erp.util.dao.impl.GenericDAOImpl;
 import ec.edu.ug.erp.util.dto.DTOUtils;
 import ec.edu.ug.erp.util.dto.generic.impl.GenericDTO;
@@ -262,7 +263,7 @@ public class SeguridadDaoImpl extends GenericDAOImpl<GenericSeguridadDTO<?>> imp
 	 * @author Joel Alvarado
 	 * @since 2015-09-16
 	 */
-	public List<ModuloDTO> obtenerListModulos(ModuloDTO filter)throws Exception{
+	public List<ModuloDTO> obtenerListModulos(ModuloDTO filter,PaginationTemplate pagination)throws Exception{
 		DetachedCriteria criteria=DetachedCriteria.forClass(ModuloDTO.class,ALIAS_MODULO);
 		DAOUtils.addLeftJoins(criteria, FIELD_PADRE);
 		
@@ -272,7 +273,7 @@ public class SeguridadDaoImpl extends GenericDAOImpl<GenericSeguridadDTO<?>> imp
 			if(filter.getDescripcion()!=null) {criteria.add(Restrictions.like(FIELD_DESCRIPCION, filter.getDescripcion(),MatchMode.ANYWHERE));}
 		}
 		
-		return findByCriteria(criteria);
+		return findByCriteria(criteria,pagination);
 	}
 
 	

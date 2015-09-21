@@ -8,6 +8,7 @@ import ec.edu.ug.erp.dto.seguridad.ModuloDTO;
 import ec.edu.ug.erp.dto.seguridad.RolDTO;
 import ec.edu.ug.erp.dto.seguridad.UsuarioDTO;
 import ec.edu.ug.erp.dto.seguridad.UsuarioSucursalDTO;
+import ec.edu.ug.erp.util.dao.PaginationTemplate;
 
 /**
  * Capa de servicio para modulo de seguridad
@@ -29,6 +30,6 @@ public interface SeguridadService {
 	public Collection<RolDTO> findRolesByUrl(String url) throws Exception;
 	public ModuloDTO obtenerModuloPorId(Long id) throws Exception;
 	public ModuloDTO obtenerModuloBienvenidaPorUsuario(UsuarioSucursalDTO usuarioAutenticado) throws Exception;
-	public List<ModuloDTO> obtenerListModulos(ModuloDTO filter)throws Exception;
+	public List<ModuloDTO> obtenerListModulos(ModuloDTO filter,PaginationTemplate pagination)throws Exception;
 
 }
