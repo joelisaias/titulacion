@@ -21,6 +21,13 @@ import ec.edu.ug.erp.util.type.StringValuedEnum;
 import ec.edu.ug.erp.util.type.StringValuedEnumReflect;
 import ec.edu.ug.erp.util.type.StringValuedEnumType;
 
+/**
+ * Clase base para todos los dto, contiene atributos comunes entre todos los dtos
+ * 
+ * @author Joel
+ * @version 1.0
+ * @param <DTO> tipo de dato generico
+ */
 @MappedSuperclass
 public abstract class GenericDTO<DTO extends GenericDTO<DTO>> implements IGenericDTO<Long>,Serializable,ITableFieldNames,IConstantes {
 	private static final long serialVersionUID = -374580369079967296L;
@@ -49,12 +56,10 @@ public abstract class GenericDTO<DTO extends GenericDTO<DTO>> implements IGeneri
 	public abstract void setCodigo(String codigo);
 
 	public String getDescripcion() {		
-		System.out.println("get description "+descripcion);
 		return descripcion;
 	}
 
 	public void setDescripcion(String descripcion) {
-		System.out.println("set description "+descripcion);
 		this.descripcion = descripcion;
 	}
 

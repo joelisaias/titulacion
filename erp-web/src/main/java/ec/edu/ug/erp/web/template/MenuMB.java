@@ -44,7 +44,7 @@ public class MenuMB extends TemplateMB implements Serializable {
 			modulos =seguridadService.loadMenu(getUsuarioSesion().getUsuarioSucursal());
 			
 			for (ModuloDTO modulo : modulos) {
-				if(!modulo.getModuloDTOs().isEmpty()){
+				if(modulo.getModuloDTOs()!=null&&!modulo.getModuloDTOs().isEmpty()){
 				DefaultSubMenu submenu = new DefaultSubMenu();
 				submenu.setLabel(modulo.getDescripcion());
 				submenu.setIcon(modulo.getIcono());

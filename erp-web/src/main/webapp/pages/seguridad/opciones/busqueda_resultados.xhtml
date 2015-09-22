@@ -11,7 +11,7 @@
 	<h:form id="frmResults">
     <p:dataTable id="idDtModulo" var="reg"   value="#{mb.dataModel}" rows="#{mb.dataModel.pagination.pageSize}" 
     			 lazy="true" selectionMode="single"  selection="#{mb.currentDTO}" rowKey="#{reg.id}"
-                 paginator="true"  paginatorPosition="top" emptyMessage="No existen Opciones" reflow="true"                        
+                 paginator="true"  paginatorPosition="bottom" emptyMessage="No existen Opciones" reflow="true" currentPageReportTemplate="{currentPage} de {totalPages}"                        
                  paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                  rowsPerPageTemplate="#{mb.dataModel.pagination.rowsPerPagesString}">
                          
@@ -20,9 +20,7 @@
          <f:facet name="header">
             Lista de Opciones
         </f:facet>
-        <f:facet name="footer">
-            .
-        </f:facet>
+        
         <p:column headerText="Id">
             <h:outputText value="#{reg.id}" />
         </p:column>

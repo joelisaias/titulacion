@@ -17,7 +17,21 @@ public abstract class DTOTemplateMB<DTO extends GenericDTO<?>> extends TemplateM
 	protected DTO searchDTO;
 	protected DTO currentDTO;
 	protected PaginationTemplate pagination;
-	protected LazyDataModel<DTO> dataModel;
+	protected LazyDataModel<DTO> dataModel=new DataTableModel<DTO>() {
+
+		private static final long serialVersionUID = -6937043607542982666L;
+
+		@Override
+		public List<DTO> loadData(DTO dto, PaginationTemplate pagination) {
+			return loadMainResult(dto, pagination);
+		}
+
+		@Override
+		public DTO actionEdit(Long id) {			
+			return actionEdit(id);
+		}
+		
+	};;
 	
 	private List<DTO> searchResult; 
 	
@@ -113,21 +127,7 @@ public abstract class DTOTemplateMB<DTO extends GenericDTO<?>> extends TemplateM
 	}
 
 	public LazyDataModel<DTO> getDataModel() {
-		return dataModel!=null?dataModel:new DataTableModel<DTO>() {
-
-			private static final long serialVersionUID = -6937043607542982666L;
-
-			@Override
-			public List<DTO> loadData(DTO dto, PaginationTemplate pagination) {
-				return loadMainResult(dto, pagination);
-			}
-
-			@Override
-			public DTO actionEdit(Long id) {			
-				return actionEdit(id);
-			}
-			
-		};
+		return dataModel;
 	}
 
 	public void setDataModel(LazyDataModel<DTO> model) {
