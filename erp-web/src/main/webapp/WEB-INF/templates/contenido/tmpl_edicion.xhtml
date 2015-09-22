@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+
+	<p:layout style="min-width:400px;min-height:700px;">
+
+		<c:if test="#{mb.editTemplate.habilitaNorte}">
+			<p:layoutUnit position="north" resizable="false"
+				size="150" rendered="#{mb.editTemplate.habilitaNorte}"
+				collapsible="true"
+				style=" padding: 0px 0px 0px 0px; marging: 0px 0px 0px 0px; border-top:none; border-bottom:none; border-right:none;"
+				minSize="40" maxSize="300">
+				<h:form>
+				<p:toolbar id="tools">
+					<f:facet name="left">
+						<p:commandButton type="button" value="Nuevo" icon="fa fa-plus" />
+						<p:commandButton type="button" value="Editar" icon="fa fa-edit" />
+						<p:commandButton type="button" value="Eliminar" icon="fa fa-minus" />
+
+						<span class="ui-separator"> <span
+							class="ui-icon ui-icon-grip-dotted-vertical" />
+						</span>
+
+						<p:commandButton type="button" title="Reporte" icon="fa fa-file-pdf-o" />
+					</f:facet>
+				</p:toolbar>
+			</h:form>
+				
+				
+				<ui:insert name="head">Head Segment Content</ui:insert>
+
+			</p:layoutUnit>
+		</c:if>
+
+
+		<p:layoutUnit position="center"
+			style="border: none; padding: 0px 0px 0px 0px; marging: 0px 0px 0px 0px;">
+				<ui:insert name="detail">
+                detail content
+                </ui:insert>
+		</p:layoutUnit>
+
+		<c:if test="#{mb.editTemplate.habilitaEste}">
+			<p:layoutUnit  position="east" resizable="false"
+				size="300" rendered="#{mb.editTemplate.habilitaEste}"
+				collapsible="true"
+				style=" padding: 0px 0px 0px 0px; marging: 0px 0px 0px 0px; border-top:none; border-bottom:none; border-right:none;"
+				minSize="40" maxSize="300">
+						<ui:insert name="east">East Segment content</ui:insert>
+
+			</p:layoutUnit>
+		</c:if>
+		<c:if test="#{mb.editTemplate.habilitaOeste}">
+			<p:layoutUnit  position="west" resizable="false"
+				size="300" rendered="#{mb.editTemplate.habilitaOeste}"
+				collapsible="true"
+				style=" padding: 0px 0px 0px 0px; marging: 0px 0px 0px 0px; border-top:none; border-bottom:none; border-right:none;"
+				minSize="40" maxSize="300">
+
+						<ui:insert name="westSegment">West segment content</ui:insert>
+			</p:layoutUnit>
+		</c:if>
+
+
+
+
+
+	</p:layout>
+
+</ui:composition>

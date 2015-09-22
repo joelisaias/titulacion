@@ -22,10 +22,25 @@ public abstract class DataTableModel<DTO extends GenericDTO<?>> extends
 		pagination=new PaginationTemplate(PaginationTemplate.defaultPageSize);
 	}
 	
+	public DTO getFilter() {
+		filter=filter!=null?filter:defineFilter();
+		return filter;
+	}
+	
+	public void setFilter(DTO filter) {
+		this.filter = filter;
+	}
+	
+
+	
+	public DTO defineFilter(){
+		throw new UnsupportedOperationException(
+				"Filtro no definido");
+	}
 
 	public abstract List<DTO> loadData(DTO dto, PaginationTemplate pagination);
 
-	public abstract DTO actionEdit(Long id);
+	public abstract DTO rowSelect(Long id);
 
 	public DTO actionNew() {
 		throw new UnsupportedOperationException(
@@ -51,7 +66,7 @@ public abstract class DataTableModel<DTO extends GenericDTO<?>> extends
 		List<DTO> result;
 		pagination.setFirstRow(first);
 		pagination.setPageSize(pageSize);
-		result = loadData(filter, pagination);
+		result = loadData(getFilter(), pagination);
 		setRowCount(pagination.getRowCount());
 		setPageSize(pagination.getPageSize());		
 		return result;
@@ -60,7 +75,7 @@ public abstract class DataTableModel<DTO extends GenericDTO<?>> extends
 	@Override
 	public DTO getRowData(String rowKey) {
 		Long id = Long.valueOf(rowKey);
-		return actionEdit(id);
+		return rowSelect(id);
 	}
 	
 	@Override

@@ -1,5 +1,6 @@
 package ec.edu.ug.erp.web.template;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.event.ActionEvent;
@@ -14,24 +15,32 @@ public abstract class DTOTemplateMB<DTO extends GenericDTO<?>> extends TemplateM
 
 	private static final long serialVersionUID = 9127180840504035585L;
 	 
+	protected boolean preLoaded;
 	protected DTO searchDTO;
 	protected DTO currentDTO;
 	protected PaginationTemplate pagination;
 	protected LazyDataModel<DTO> dataModel=new DataTableModel<DTO>() {
 
 		private static final long serialVersionUID = -6937043607542982666L;
-
+		
+		public DTO defineFilter() {
+			return getSearchDTO();
+		};
+		
 		@Override
 		public List<DTO> loadData(DTO dto, PaginationTemplate pagination) {
+			if(!isPreLoaded())
+				return new ArrayList<DTO>();
 			return loadMainResult(dto, pagination);
-		}
+		};
 
 		@Override
-		public DTO actionEdit(Long id) {			
+		public DTO rowSelect(Long id) {			
 			return actionEdit(id);
-		}
+		};	
 		
-	};;
+		
+	};
 	
 	private List<DTO> searchResult; 
 	
@@ -78,8 +87,28 @@ public abstract class DTOTemplateMB<DTO extends GenericDTO<?>> extends TemplateM
 	public abstract TipoTemplate initSearchTemplate();
 	public abstract TipoTemplate initEditTemplate();
 	
-	public void actionSearch(ActionEvent evt){
-		addMessageInfo("search");
+	public void actionSearch(ActionEvent evt){	
+		dataModel=new DataTableModel<DTO>() {
+
+			private static final long serialVersionUID = -6937043607542982666L;
+			
+			public DTO defineFilter() {
+				return searchDTO;
+			};
+			
+			@Override
+			public List<DTO> loadData(DTO dto, PaginationTemplate pagination) {
+				return loadMainResult(dto, pagination);
+			};
+
+			@Override
+			public DTO rowSelect(Long id) {			
+				return actionEdit(id);
+			};	
+			
+			
+		};
+		
 	}	
 	public void actionNew(ActionEvent evt){
 		setCurrentDTO(actionNew());		
@@ -90,8 +119,15 @@ public abstract class DTOTemplateMB<DTO extends GenericDTO<?>> extends TemplateM
 				
 	}
 	
+	public void actionRedirect(){
+		addMessageInfo("SELECCIONANDO "+currentDTO);
+		//getFacesContext().getApplication().getNavigationHandler().handleNavigation(getFacesContext(), null, "/pages/seguridad/opciones/edicion.jsf");		
+	}
+	
+	
 	public DTO getSearchDTO() {
-		return searchDTO!=null?searchDTO:instanceSearchDTO();
+		searchDTO=searchDTO!=null?searchDTO:instanceSearchDTO();
+		return searchDTO;
 	}
 	
 	public void setSearchDTO(DTO searchDTO) {
@@ -107,7 +143,8 @@ public abstract class DTOTemplateMB<DTO extends GenericDTO<?>> extends TemplateM
 	}
 
 	public List<DTO> getSearchResult() {
-		return searchResult!=null?searchResult:loadMainResult(getSearchDTO(),getPagination());
+		searchResult=searchResult!=null?searchResult:loadMainResult(getSearchDTO(),getPagination());
+		return searchResult;
 	}
 		
 	public TipoTemplate getSearchTemplate() {
@@ -132,6 +169,14 @@ public abstract class DTOTemplateMB<DTO extends GenericDTO<?>> extends TemplateM
 
 	public void setDataModel(LazyDataModel<DTO> model) {
 		this.dataModel = model;
+	}
+
+	public boolean isPreLoaded() {
+		return preLoaded;
+	}
+
+	public void setPreLoaded(boolean preLoaded) {
+		this.preLoaded = preLoaded;
 	}
 	
 	

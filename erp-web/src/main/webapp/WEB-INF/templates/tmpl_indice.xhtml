@@ -15,7 +15,7 @@
 		<ui:include src="/WEB-INF/templates/segmentos/tmpl_commands.xhtml" />
 
 		<p:outputPanel id="pagesTarget">
-			<p:tabView id="tbvOptionsViewer" scrollable="true" dynamic="true" cache="true"
+			<p:tabView id="tbvOptionsViewer" scrollable="true" dynamic="true" cache="true" activeIndex="#{tabOptionsMB.activeIndex}"
 				style="border: none; padding: 0px 0px 0px 0px; marging: 0px 0px 0px 0px;">
 				<p:ajax event="tabClose" listener="#{tabOptionsMB.onTabClose}"
 					update="pagesTarget" />

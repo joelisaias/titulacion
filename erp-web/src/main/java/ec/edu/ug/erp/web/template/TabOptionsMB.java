@@ -5,9 +5,9 @@ import java.util.Calendar;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 import org.primefaces.event.TabChangeEvent;
@@ -18,7 +18,7 @@ import ec.edu.ug.erp.dto.seguridad.ModuloDTO.Tipo;
 import ec.edu.ug.erp.util.dto.generic.impl.GenericDTO.Estado;
 
 @Named("tabOptionsMB")
-@SessionScoped
+@ViewScoped
 public class TabOptionsMB extends TemplateMB {
 	/**
 	 * 
@@ -26,6 +26,8 @@ public class TabOptionsMB extends TemplateMB {
 	private static final long serialVersionUID = 10820309169280424L;
 	
 	private List<ModuloDTO> options;
+	
+	private int activeIndex;
 	
 	@PostConstruct
 	protected void init(){
@@ -46,7 +48,6 @@ public class TabOptionsMB extends TemplateMB {
 		addOption(modulo);
 		
 		
-		System.out.println("SE BUSCARA WELCOMEPAGE");
 //		try {
 //			ModuloDTO modulo=seguridad.obtenerModuloBienvenidaPorUsuario(getUsuarioSesion().getUsuarioSucursal());
 //			
@@ -55,13 +56,24 @@ public class TabOptionsMB extends TemplateMB {
 //		} catch (Exception e) {
 //			addMessageError(e.getMessage());
 //		}		
+	
 		
+		activeIndex=0;
 
 	}
 
     public void addOption(ModuloDTO option){
     	options=options!=null?options:new ArrayList<ModuloDTO>();
-    	options.add(option);
+    	
+    	boolean found=false;    	
+    	for (ModuloDTO o : options) {
+			if(o.equals(option)){
+				found=true;
+				break;
+			}
+		}	
+    	if(!found)
+    		options.add(option);
     }
     
     public void addTab(final Long id){
@@ -75,8 +87,6 @@ public class TabOptionsMB extends TemplateMB {
     }
     
     public void removeTab(final Long id){
-    	System.out.println("removing..." +id);
-    	addMessageInfo("removing..." +id);
     	
     	int index=0;
     	for(ModuloDTO opcion:getOptions()){
@@ -96,19 +106,28 @@ public class TabOptionsMB extends TemplateMB {
     }
          
     public void onTabClose(TabCloseEvent event) {
-        FacesMessage msg = new FacesMessage("Tab Closed", "Closed tab: " + event.getTab());
-        FacesContext.getCurrentInstance().addMessage(null, msg);
+        
+        addMessageInfo("Closed tab: " + activeIndex);
+        
+        removeTab(new Long(activeIndex));
     }
     
 	
 	public List<ModuloDTO> getOptions() {
 		options=options!=null?options:new ArrayList<ModuloDTO>();
-		System.out.println(options);
 		return options;
 	}
 
 	public void setOptions(List<ModuloDTO> options) {
 		this.options = options;
+	}
+
+	public int getActiveIndex() {
+		return activeIndex;
+	}
+
+	public void setActiveIndex(int activeIndex) {
+		this.activeIndex = activeIndex;
 	}
 	
 	

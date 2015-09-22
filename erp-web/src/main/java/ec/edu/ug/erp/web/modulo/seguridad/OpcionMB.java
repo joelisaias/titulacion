@@ -30,7 +30,7 @@ public class OpcionMB extends GenericSeguridadMB<ModuloDTO> {
 	
 	@PostConstruct
 	protected void init(){
-		System.out.println("INICIANDO opcion MB");
+		
 	}
 
 	@Override
