@@ -31,7 +31,8 @@ _______________________________________________
 
 ##erp-web
 
-* Capa de presentacion	
-	> Named Beans (CDI)
-	> JSF
-	> HTML5
+> Capa de presentacion
+	
+> Named Beans (CDI) <br/>
+> JSF <br/>
+> HTML5 <br/>
