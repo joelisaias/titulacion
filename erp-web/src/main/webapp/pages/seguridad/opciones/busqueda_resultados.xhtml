@@ -15,7 +15,7 @@
                  paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                  rowsPerPageTemplate="#{mb.dataModel.pagination.rowsPerPagesString}">
                          
-        <p:ajax event="rowDblselect"  listener="#{mb.actionRedirect}"/>
+        <p:ajax event="rowDblselect"  listener="#{mb.actionEditRedirect(currentOption)}" update="#{tabContent}"/>
                
                          
          <f:facet name="header">

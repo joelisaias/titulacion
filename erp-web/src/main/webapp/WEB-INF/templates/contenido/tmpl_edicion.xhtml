@@ -18,6 +18,11 @@
 				<h:form>
 				<p:toolbar id="tools">
 					<f:facet name="left">
+						<p:commandButton title="Volver" icon="fa fa-arrow-left" actionListener="#{mb.actionGoBack(currentOption)}" update="#{tabContent}" />
+
+						<span class="ui-separator"> <span
+							class="ui-icon ui-icon-grip-dotted-vertical" />
+						</span>
 						<p:commandButton type="button" value="Nuevo" icon="fa fa-plus" />
 						<p:commandButton type="button" value="Editar" icon="fa fa-edit" />
 						<p:commandButton type="button" value="Eliminar" icon="fa fa-minus" />

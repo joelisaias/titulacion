@@ -7,6 +7,7 @@ import javax.faces.event.ActionEvent;
 
 import org.primefaces.model.LazyDataModel;
 
+import ec.edu.ug.erp.dto.seguridad.ModuloDTO;
 import ec.edu.ug.erp.util.dao.PaginationTemplate;
 import ec.edu.ug.erp.util.dto.generic.impl.GenericDTO;
 import ec.edu.ug.erp.web.model.DataTableModel;
@@ -119,10 +120,32 @@ public abstract class DTOTemplateMB<DTO extends GenericDTO<?>> extends TemplateM
 				
 	}
 	
-	public void actionRedirect(){
+	public void actionEditRedirect(ModuloDTO opcionActual){
 		addMessageInfo("SELECCIONANDO "+currentDTO);
-		//getFacesContext().getApplication().getNavigationHandler().handleNavigation(getFacesContext(), null, "/pages/seguridad/opciones/edicion.jsf");		
+		
+		setOpcionActual(opcionActual);
+		
+		addMessageInfo("SELECCIONANDO "+getCurrentOption());
+		addMessageInfo("SELECCIONANDO "+getUrlEditar());
+		addMessageInfo("SELECCIONANDO "+getUrlEditar());
+		
+		setTargetURL(getUrlEditar());
+				
 	}
+	
+	public void actionGoBack(ModuloDTO opcionActual){
+		addMessageInfo("SELECCIONANDO "+currentDTO);
+		
+		setOpcionActual(opcionActual);
+		
+		addMessageInfo("SELECCIONANDO "+getCurrentOption());
+		addMessageInfo("SELECCIONANDO "+getUrlEditar());
+		addMessageInfo("SELECCIONANDO "+getUrlEditar());
+		
+		setTargetURL(getUrlListar());
+				
+	}
+	
 	
 	
 	public DTO getSearchDTO() {

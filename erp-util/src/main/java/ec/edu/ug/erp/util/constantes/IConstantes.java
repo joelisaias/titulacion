@@ -81,6 +81,11 @@ public interface IConstantes {
 	public static final String PATH_SECURE_PAGES="/pages/**";
 	public static final String PATH_UNSECURE_PAGES="/errorPages/**";
 	
+	/**
+	 * WEB PARAMS
+	 */
+	public static final String PARAM_CURRENT_OPTION="currentOption";
+	
 	
 	
 }

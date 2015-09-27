@@ -4,7 +4,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.faces.view.ViewScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 import ec.edu.ug.erp.dto.seguridad.ModuloDTO;
@@ -21,7 +21,7 @@ import ec.edu.ug.erp.util.dto.generic.impl.GenericDTO.Estado;
  * 
  */
 @Named("opcionMB")
-@ViewScoped
+@SessionScoped
 public class OpcionMB extends GenericSeguridadMB<ModuloDTO> {
 
 	private static final long serialVersionUID = 1670252147038791394L;

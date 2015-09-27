@@ -6,14 +6,14 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:pe="http://primefaces.org/ui/extensions">
+	<ui:param name="idOutCOntent" value=":tbvOptionsViewer:contenSearch#{optId}:outSearch#{optId}" />
+<f:subview id="contenSearch#{optId}">
+	<p:layout id="lySearchBody#{optId}" style="min-width:400px;min-height:700px;">
 
-
-	<p:layout id="lySearchBody" style="min-width:400px;min-height:700px;">
-
-		<p:layoutUnit position="center" id="lyCenter"
+		<p:layoutUnit position="center" id="lyCenter#{optId}"
 			style="border: none; padding: 0px 0px 0px 0px; marging: 0px 0px 0px 0px;">
 			<h:form>
-				<p:toolbar id="tools">
+				<p:toolbar id="tools#{optId}">
 					<f:facet name="left">
 						<p:commandButton type="button" value="Nuevo" icon="fa fa-plus" />
 						<p:commandButton type="button" value="Editar" icon="fa fa-edit" />
@@ -27,7 +27,7 @@
 					</f:facet>
 				</p:toolbar>
 			</h:form>
-			<h:panelGroup id="outSearch" styleClass="searchResultArea">
+			<h:panelGroup id="outSearch#{optId}" styleClass="searchResultArea">
 				<ui:insert name="result">
                 center content
                 </ui:insert>
@@ -35,24 +35,24 @@
 		</p:layoutUnit>
 
 		<c:if test="#{mb.searchTemplate.habilitaNorte}">
-			<p:layoutUnit id="lyNorth" position="north" resizable="false"
+			<p:layoutUnit id="lyNorth#{optId}" position="north" resizable="false"
 				size="150" rendered="#{mb.searchTemplate.habilitaNorte}"
 				collapsible="true"
 				style=" padding: 0px 0px 0px 0px; marging: 0px 0px 0px 0px; border-top:none; border-bottom:none; border-right:none;"
 				minSize="40" maxSize="300">
-				<h:form id="frmFilterN">
-					<p:toolbar id="toolsSearchN">
+				<h:form id="frmFilterN#{optId}">
+					<p:toolbar id="toolsSearchN#{optId}">
 						<f:facet name="left">
-							<p:commandButton id="btnSearch1" value="Buscar" title="Buscar"
+							<p:commandButton id="btnSearch1#{optId}" value="Buscar" title="Buscar"
 								actionListener="#{mb.actionSearch}" ajax="true"
-								update="#{p:component('outSearch')}" partialSubmit="true"
+								update="#{idOutCOntent}" partialSubmit="true"
 								process="@form,@this" icon="fa fa-search" />
 						</f:facet>
 
 					</p:toolbar>
 
 
-					<p:panel id="pnlFilterN" styleClass="filterArea"
+					<p:panel id="pnlFilterN#{optId}" styleClass="filterArea"
 						style="border:none;">
 
 
@@ -68,22 +68,22 @@
 			</p:layoutUnit>
 		</c:if>
 		<c:if test="#{mb.searchTemplate.habilitaEste}">
-			<p:layoutUnit id="lyEast" position="east" resizable="false"
+			<p:layoutUnit id="lyEast#{optId}" position="east" resizable="false"
 				size="300" rendered="#{mb.searchTemplate.habilitaEste}"
 				collapsible="true"
 				style=" padding: 0px 0px 0px 0px; marging: 0px 0px 0px 0px; border-top:none; border-bottom:none; border-right:none;"
 				minSize="40" maxSize="300">
-				<h:form id="frmFilterE">
-					<p:toolbar id="toolsSearchE">
+				<h:form id="frmFilterE#{optId}">
+					<p:toolbar id="toolsSearchE#{optId}">
 						<f:facet name="left">
-							<p:commandButton id="btnSearch2" value="Buscar" title="Buscar"
+							<p:commandButton id="btnSearch2#{optId}" value="Buscar" title="Buscar"
 								actionListener="#{mb.actionSearch}" ajax="true"
-								partialSubmit="true" update="#{p:component('outSearch')}"
+								partialSubmit="true" update="#{idOutCOntent}"
 								process="@form,@this" icon="fa fa-search" />
 						</f:facet>
 
 					</p:toolbar>
-					<p:panel id="pnlFilterE" styleClass="filterArea"
+					<p:panel id="pnlFilterE#{optId}" styleClass="filterArea"
 						style="border:none;">
 
 
@@ -98,24 +98,24 @@
 			</p:layoutUnit>
 		</c:if>
 		<c:if test="#{mb.searchTemplate.habilitaOeste}">
-			<p:layoutUnit id="lyWest" position="west" resizable="false"
+			<p:layoutUnit id="lyWest#{optId}" position="west" resizable="false"
 				size="300" rendered="#{mb.searchTemplate.habilitaOeste},@this"
 				collapsible="true"
 				style=" padding: 0px 0px 0px 0px; marging: 0px 0px 0px 0px; border-top:none; border-bottom:none; border-right:none;"
 				minSize="40" maxSize="300">
 				<h:form id="frmFilterO">
-					<p:toolbar id="toolsSearchO">
+					<p:toolbar id="toolsSearchO#{optId}">
 						<f:facet name="left">
-							<p:commandButton id="btnSearch3" value="Buscar" title="Buscar"
+							<p:commandButton id="btnSearch3#{optId}" value="Buscar" title="Buscar"
 								actionListener="#{mb.actionSearch}" ajax="true"
-								update="#{p:component('outSearch')}" partialSubmit="true"
+								update="#{idOutCOntent}" partialSubmit="true"
 								process="@form,@this" icon="fa fa-search" />
 						</f:facet>
 
 					</p:toolbar>
 
 
-					<p:panel id="pnlFilterO" styleClass="filterArea"
+					<p:panel id="pnlFilterO#{optId}" styleClass="filterArea"
 						style="border:none;">
 
 
@@ -135,5 +135,5 @@
 
 
 	</p:layout>
-
+</f:subview>
 </ui:composition>

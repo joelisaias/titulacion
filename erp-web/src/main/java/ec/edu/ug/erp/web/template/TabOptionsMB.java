@@ -1,33 +1,36 @@
 package ec.edu.ug.erp.web.template;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 import org.primefaces.event.TabChangeEvent;
 import org.primefaces.event.TabCloseEvent;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import ec.edu.ug.erp.dto.seguridad.ModuloDTO;
 import ec.edu.ug.erp.dto.seguridad.ModuloDTO.Tipo;
+import ec.edu.ug.erp.servicio.seguridad.SeguridadService;
 import ec.edu.ug.erp.util.dto.generic.impl.GenericDTO.Estado;
+import ec.edu.ug.erp.util.jsf.GenericManagedBean;
 
 @Named("tabOptionsMB")
-@ViewScoped
-public class TabOptionsMB extends TemplateMB {
-	/**
-	 * 
-	 */
+@SessionScoped
+public class TabOptionsMB extends GenericManagedBean implements Serializable {
+	
+
 	private static final long serialVersionUID = 10820309169280424L;
 	
 	private List<ModuloDTO> options;
 	
 	private int activeIndex;
+
+	@Autowired protected SeguridadService 		seguridadService;
 	
 	@PostConstruct
 	protected void init(){
@@ -45,6 +48,7 @@ public class TabOptionsMB extends TemplateMB {
 		modulo.setOrden(0);
 		modulo.setAccionListar("/pages/general/dashboard.xhtml");		
 		modulo.setTipo(Tipo.WELCOMEPAGE);
+		modulo.setTargetURL(modulo.getAccionListar());
 		addOption(modulo);
 		
 		
@@ -79,27 +83,43 @@ public class TabOptionsMB extends TemplateMB {
     public void addTab(final Long id){
     	try {
     		ModuloDTO modulo=seguridadService.obtenerModuloPorId(id);
+    		modulo.setTargetURL(modulo.getAccionListar());
     		if(modulo!=null&& modulo.getAccionListar()!=null)
     			addOption(modulo);
 		} catch (Exception e) {			
 			addMessageError(e.getMessage());
+			e.printStackTrace();
 		}
     }
+    
     
     public void removeTab(final Long id){
     	
     	int index=0;
     	for(ModuloDTO opcion:getOptions()){
-    		if(opcion.getId().equals(id))    		
-    			getOptions().remove(index);
+    		if(opcion.getId().equals(id))   
+    			break;
     		index++;
     	}
+    	clearSessionAttribute(String.format("#{%s}", options.get(index-1).getManagedBean()));
+		getOptions().remove(index-1);
     	
     }
     
     public void onTabChange(TabChangeEvent event) {
-        FacesMessage msg = new FacesMessage("Tab Changed", "Active Tab: " + event.getTab() );
-        FacesContext.getCurrentInstance().addMessage(null, msg);
+    	
+        //addMessageInfo("tab changue Active Tab1: " + event.getTab());
+        addMessageInfo("tab changue Active Tab2: " + event.getTab().getId());
+        //addMessageInfo("tab changue Active Tab3: " + event.getSource());
+        addMessageInfo("tab changue Active Tab4: " + getActiveIndex());
+        //addMessageInfo("tab changue Active Tab4: " + options.get(getActiveIndex()));
+        //addMessageInfo("tab changue Active Tab4: " + options.get(getActiveIndex()-1));
+        
+        //putValueSession(PARAM_CURRENT_OPTION, current);
+        
+        
+        
+        
         
        
         
@@ -130,6 +150,7 @@ public class TabOptionsMB extends TemplateMB {
 		this.activeIndex = activeIndex;
 	}
 	
+
 	
 
 }
