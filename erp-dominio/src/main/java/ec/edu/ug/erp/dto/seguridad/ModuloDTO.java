@@ -16,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.Type;
 
@@ -64,8 +65,8 @@ public class ModuloDTO extends GenericSeguridadDTO<ModuloDTO>{
 	private Integer nivel;
 	
 	@Column(name=MANAGEDBEAN)
-	private String managedBean;
-	
+	private String managedBean;	
+
 	@Column(name=TIPO,length=1)
 	@Type(type=Tipo.TYPE)
 	private Tipo tipo;
@@ -79,6 +80,9 @@ public class ModuloDTO extends GenericSeguridadDTO<ModuloDTO>{
 	
 	@OneToMany(mappedBy=FIELD_MODULO,fetch=FetchType.LAZY)
 	private List<TareaDTO> tareaDTOs;
+	
+	@Transient
+	private String targetURL;
 	
 	public Long getId() {		
 		return id;
@@ -170,6 +174,15 @@ public class ModuloDTO extends GenericSeguridadDTO<ModuloDTO>{
 	public void setParametros(String parametros) {
 		this.parametros = parametros;
 	}
+	
+	public String getManagedBean() {
+		return managedBean;
+	}
+
+	public void setManagedBean(String managedBean) {
+		this.managedBean = managedBean;
+	}
+
 
 	public List<ModuloDTO> getModuloDTOs() {
 		return moduloDTOs;
@@ -186,8 +199,15 @@ public class ModuloDTO extends GenericSeguridadDTO<ModuloDTO>{
 	public void setTareaDTOs(List<TareaDTO> tareaDTOs) {
 		this.tareaDTOs = tareaDTOs;
 	}
+			
+	public String getTargetURL() {
+		return targetURL;
+	}
 
-	
+	public void setTargetURL(String targetURL) {
+		this.targetURL = targetURL;
+	}
+
 	public String toJsonString(){
 		return "{\"id\":"+getId()+"}";
 	}

@@ -9,22 +9,40 @@
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:of="http://omnifaces.org/functions"
 	template="/WEB-INF/templates/tmpl_principal.xhtml">
+	
 	<ui:define name="lienzo">
 
 		<p:growl autoUpdate="true" />
 		<ui:include src="/WEB-INF/templates/segmentos/tmpl_commands.xhtml" />
 
 		<p:outputPanel id="pagesTarget">
-			<p:tabView id="tbvOptionsViewer" scrollable="true" dynamic="true" cache="true" activeIndex="#{tabOptionsMB.activeIndex}"
-				style="border: none; padding: 0px 0px 0px 0px; marging: 0px 0px 0px 0px;">
-				<p:ajax event="tabClose" listener="#{tabOptionsMB.onTabClose}"
-					update="pagesTarget" />
+			<p:tabView id="tbvOptionsViewer" scrollable="true"  activeIndex="#{tabOptionsMB.activeIndex}" 
+				style="border: none; padding: 0px 0px 0px 0px; marging: 0px 0px 0px 0px;" widgetVar="tabView" >
+				<p:ajax event="tabClose" listener="#{tabOptionsMB.onTabClose}" update="pagesTarget" />
+				<p:ajax event="tabChange" listener="#{tabOptionsMB.onTabChange}" />
+				
+				<!-- 
+				 <p:tab id="tabOp_#{option.codigo}" title="#{option.descripcion}" titleStyleClass="tab-title"
+						closable="#{option.tipo.opcion}" >
+						<ui:param name="currentOption" value="#{option}" />
+						 <ui:include src="#{option.targetURL}" />
+						
+					</p:tab> -->
+				  
 				<c:forEach items="#{tabOptionsMB.options}" var="option">
-					<p:tab id="tabOp#{option.codigo}" title="#{option.descripcion}" titleStyleClass="tab-title"
-						closable="#{option.tipo.opcion}">
-						<ui:include src="#{option.accionListar}" />
+
+					<p:tab id="tabOp_#{option.codigo}" title="#{option.descripcion}"
+						titleStyleClass="tab-title" closable="#{option.tipo.opcion}">
+						<ui:param name="currentOption" value="#{option}" />
+						<ui:param name="optId" value="#{option.id}" />
+						<ui:param name="tabContent" value=":tbvOptionsViewer:panOut#{optId}" />
+
+						<p:outputPanel id="panOut#{optId}">
+							<ui:include src="#{option.targetURL}" />
+						</p:outputPanel>
 					</p:tab>
 				</c:forEach>
+				 
 			</p:tabView>
 		</p:outputPanel>
 	</ui:define>

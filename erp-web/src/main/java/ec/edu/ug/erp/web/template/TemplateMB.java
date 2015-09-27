@@ -2,6 +2,7 @@ package ec.edu.ug.erp.web.template;
 
 import javax.inject.Inject;
 
+import org.primefaces.context.RequestContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import ec.edu.ug.erp.dto.seguridad.ModuloDTO;
@@ -32,6 +33,7 @@ public class TemplateMB extends GenericManagedBean {
 	@Autowired protected InventarioService 		inventarioService;
 		
 	@Inject private UsuarioSesionMB usuarioSesion;
+	@Inject private TabOptionsMB userOptions;
 	
 	private ModuloDTO opcionActual;
 	
@@ -49,6 +51,29 @@ public class TemplateMB extends GenericManagedBean {
 
 	public void setUsuarioSesion(UsuarioSesionMB usuarioSesion) {
 		this.usuarioSesion = usuarioSesion;
+	}
+	
+	public TabOptionsMB getUserOptions() {
+		return userOptions;
+	}
+	
+	public ModuloDTO getCurrentOption(){
+		return getOpcionActual();
+	}
+	
+	public String getUrlListar(){
+		return getCurrentOption().getAccionListar();
+	}
+	
+	public String getUrlEditar(){
+		return getCurrentOption().getAccionEditar();
+	}
+	public String getUrlCrear(){
+		return getCurrentOption().getAccionCrear();
+	}
+	
+	public void setTargetURL(String targetURL){
+		getCurrentOption().setTargetURL(targetURL);
 	}
 	
 	
@@ -74,6 +99,18 @@ public class TemplateMB extends GenericManagedBean {
 
 	public void setOpcionActual(ModuloDTO opcionActual) {
 		this.opcionActual = opcionActual;
+	}
+	
+	public RequestContext getPrimeRequestContext(){
+		return RequestContext.getCurrentInstance();
+	}
+	
+	public void updatePrimeComponent(String clientId){
+		getPrimeRequestContext().update(String.format("#{p:component('%s')}", clientId));
+	}
+	
+	public void excecutePrime(String script){
+		getPrimeRequestContext().execute(script);
 	}
 
 	
