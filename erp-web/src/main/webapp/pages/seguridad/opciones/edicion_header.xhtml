@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
+	>
+
+	<h:form id="frmOpcion">
+	<h:panelGrid columns="2">
+		<h:panelGrid id="col1" columns="2">
+				<h:outputLabel for="txtCodigo" value="Codigo"/>
+				<h:inputText id="txtCodigo" value="#{dto.codigo}" placeholder="Codigo" styleClass="form-control"/>
+			
+		</h:panelGrid>
+		<h:panelGrid id="col2" columns="2"></h:panelGrid>
+	</h:panelGrid>
+	</h:form>
+	
+
+</ui:composition>
