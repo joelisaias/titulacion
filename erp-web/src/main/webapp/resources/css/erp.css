@@ -2402,4 +2402,10 @@ border-radius: 50%;}
 	  padding: 2px 2px 2px 2px;
   }
   
+  .edit-header-content{
+  	  margin: 2px 2px 2px 2px;
+	  padding: 2px 2px 2px 2px;
+	  border: none;	  
+  }
+  
 }

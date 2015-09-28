@@ -10,14 +10,66 @@
 	>
 
 	<h:form id="frmOpcion">
-	<h:panelGrid columns="2">
-		<h:panelGrid id="col1" columns="2">
+	<p:panelGrid cellpadding="1" style="width:100%; border:none;" >
+
+		<p:row style="border:none;">
+				<p:column style="border:none;">
 				<h:outputLabel for="txtCodigo" value="Codigo"/>
-				<h:inputText id="txtCodigo" value="#{dto.codigo}" placeholder="Codigo" styleClass="form-control"/>
-			
-		</h:panelGrid>
-		<h:panelGrid id="col2" columns="2"></h:panelGrid>
-	</h:panelGrid>
+				</p:column>
+				<p:column style="border:none;">
+				<h:inputText id="txtCodigo" value="#{dto.codigo}" placeholder="Codigo" styleClass="form-control"/>			
+				</p:column>
+				<p:column style="border:none;">
+				<h:outputLabel for="txtDesc" value="Descripcion"/>
+				</p:column>
+				<p:column colspan="3" width="100%" style="border:none;">					
+					<h:inputText id="txtDesc" value="#{dto.descripcion}" placeholder="Descripcion" styleClass="form-control" style="width:100%;"/>
+				</p:column>			
+		</p:row>
+
+		<p:row style="border:none;">		
+				<p:column style="border:none;">
+				<h:outputLabel for="txtMB" value="Managed Bean"/>
+				</p:column>
+				<p:column style="border:none;">
+				<h:inputText id="txtMB" value="#{dto.managedBean}" placeholder="Managed Bean" styleClass="form-control"/>
+				</p:column>
+				<p:column style="border:none;">
+				<h:outputLabel for="txtIcon" value="Icono"/>
+				</p:column>
+				<p:column style="border:none;">
+				<h:inputText id="txtIcon" value="#{dto.icono}" placeholder="Icono" styleClass="form-control"/>
+				</p:column>
+				<p:column style="border:none;">
+				<h:outputLabel for="txtTipo" value="Tipo"/>
+				</p:column>
+				<p:column style="border:none;">
+				<h:inputText id="txtTipo" value="#{dto.tipo}" placeholder="Tipo" styleClass="form-control"/>
+				</p:column>
+		</p:row>
+		
+		<p:row style="border:none;">		
+				<p:column style="border:none;">
+				<h:outputLabel for="txtAlist" value="Accion Busqueda"/>
+				</p:column>
+				<p:column style="border:none;">
+				<h:inputText id="txtAlist" value="#{dto.accionListar}" placeholder="Accion Busqueda" styleClass="form-control"/>
+				</p:column>
+				<p:column style="border:none;">
+				<h:outputLabel for="txtAEdit" value="Accion Edicion"/>
+				</p:column>
+				<p:column style="border:none;">
+				<h:inputText id="txtAEdit" value="#{dto.accionEditar}" placeholder="Accion Edicion" styleClass="form-control"/>
+				</p:column>
+				<p:column style="border:none;">
+				<h:outputLabel for="txtAnew" value="Accion Crear"/>
+				</p:column>
+				<p:column style="border:none;">
+				<h:inputText id="txtAnew" value="#{dto.accionCrear}" placeholder="Accion Crear" styleClass="form-control"/>
+				</p:column>
+		</p:row>
+		
+	</p:panelGrid>
 	</h:form>
 	
 

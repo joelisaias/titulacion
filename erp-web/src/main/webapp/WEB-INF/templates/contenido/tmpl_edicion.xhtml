@@ -16,7 +16,9 @@
 				style=" padding: 0px 0px 0px 0px; marging: 0px 0px 0px 0px; border-top:none; border-bottom:none; border-right:none;"
 				minSize="40" maxSize="#{sizeNorth eq null?300:sizeNorth}">
 				<ui:include src="tmpl_edicion_tools.xhtml" />				
-				<ui:insert name="head">Head Segment Content</ui:insert>
+				<p:panel styleClass="edit-header-content" style="border:none">
+					<ui:insert name="head">Head Segment Content</ui:insert>
+				</p:panel>
 			</p:layoutUnit>
 		</c:if>
 
