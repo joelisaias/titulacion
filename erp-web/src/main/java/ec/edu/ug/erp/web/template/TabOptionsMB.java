@@ -50,18 +50,7 @@ public class TabOptionsMB extends GenericManagedBean implements Serializable {
 		modulo.setTipo(Tipo.WELCOMEPAGE);
 		modulo.setTargetURL(modulo.getAccionListar());
 		addOption(modulo);
-		
-		
-//		try {
-//			ModuloDTO modulo=seguridad.obtenerModuloBienvenidaPorUsuario(getUsuarioSesion().getUsuarioSucursal());
-//			
-//			System.out.println(modulo);
-//			addOption(modulo);
-//		} catch (Exception e) {
-//			addMessageError(e.getMessage());
-//		}		
 	
-		
 		activeIndex=0;
 
 	}
@@ -87,8 +76,7 @@ public class TabOptionsMB extends GenericManagedBean implements Serializable {
     		if(modulo!=null&& modulo.getAccionListar()!=null)
     			addOption(modulo);
 		} catch (Exception e) {			
-			addMessageError(e.getMessage());
-			e.printStackTrace();
+			addMessageError(e.getMessage());			
 		}
     }
     
@@ -108,27 +96,10 @@ public class TabOptionsMB extends GenericManagedBean implements Serializable {
     
     public void onTabChange(TabChangeEvent event) {
     	
-        //addMessageInfo("tab changue Active Tab1: " + event.getTab());
-        addMessageInfo("tab changue Active Tab2: " + event.getTab().getId());
-        //addMessageInfo("tab changue Active Tab3: " + event.getSource());
-        addMessageInfo("tab changue Active Tab4: " + getActiveIndex());
-        //addMessageInfo("tab changue Active Tab4: " + options.get(getActiveIndex()));
-        //addMessageInfo("tab changue Active Tab4: " + options.get(getActiveIndex()-1));
-        
-        //putValueSession(PARAM_CURRENT_OPTION, current);
-        
-        
-        
-        
-        
-       
         
     }
          
-    public void onTabClose(TabCloseEvent event) {
-        
-        addMessageInfo("Closed tab: " + activeIndex);
-        
+    public void onTabClose(TabCloseEvent event) {        
         removeTab(new Long(activeIndex));
     }
     

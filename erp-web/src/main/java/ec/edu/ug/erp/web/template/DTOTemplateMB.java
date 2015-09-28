@@ -121,29 +121,13 @@ public abstract class DTOTemplateMB<DTO extends GenericDTO<?>> extends TemplateM
 	}
 	
 	public void actionEditRedirect(ModuloDTO opcionActual){
-		addMessageInfo("SELECCIONANDO "+currentDTO);
-		
 		setOpcionActual(opcionActual);
-		
-		addMessageInfo("SELECCIONANDO "+getCurrentOption());
-		addMessageInfo("SELECCIONANDO "+getUrlEditar());
-		addMessageInfo("SELECCIONANDO "+getUrlEditar());
-		
 		setTargetURL(getUrlEditar());
-				
 	}
 	
 	public void actionGoBack(ModuloDTO opcionActual){
-		addMessageInfo("SELECCIONANDO "+currentDTO);
-		
 		setOpcionActual(opcionActual);
-		
-		addMessageInfo("SELECCIONANDO "+getCurrentOption());
-		addMessageInfo("SELECCIONANDO "+getUrlEditar());
-		addMessageInfo("SELECCIONANDO "+getUrlEditar());
-		
-		setTargetURL(getUrlListar());
-				
+		setTargetURL(getUrlListar());				
 	}
 	
 	
