@@ -52,16 +52,17 @@
 				</p:column>
 				<p:column style="border:none;">				
 					<h:panelGrid columns="2" width="100%">
-						<h:selectOneMenu id="lstTipo" value="#{dto.tipo}" editable="false" styleClass="form-control">
+						<p:selectOneMenu id="lstTipo" value="#{dto.tipo}" editable="false" filter="true" style="with:40px;"
+										 converter="omnifaces.GenericEnumConverter" panelStyle="width:300px" var="t" effect="fade">
 							<p:ajax update="lblTipo" />
-				            <f:selectItems value="#{mb.mapTipo}" var="tp" itemLabel="#{tp.value}" itemValue="#{tp.key}" />
-				            <h:column>
-				            	<h:outputText value="#{tp.value}"/>
-				            </h:column>
-				            <h:column>
-				            	<h:outputText value="#{tp.key}"/>
-				            </h:column>
-				        </h:selectOneMenu>
+				            <f:selectItems value="#{mb.listTipo}" var="tp" itemLabel="#{tp.value}" itemValue="#{tp}" />
+				            <p:column style="width:10%;">
+				            	<h:outputText value="#{t.value}"/>
+				            </p:column>
+				            <p:column>
+				            	<h:outputText value="#{t.key}"/>
+				            </p:column>
+				        </p:selectOneMenu>
 				        
 				        <h:outputText id="lblTipo" value="#{dto.tipo.key}" styleClass="form-control" style="width:100%;" />
 			        </h:panelGrid>
