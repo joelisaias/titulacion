@@ -8,64 +8,84 @@
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:of="http://omnifaces.org/functions"
 	>
-
+	
 	<h:form id="frmOpcion">
-	<p:panelGrid cellpadding="1" style="width:100%; border:none;" >
+	<p:panelGrid id="pgHedOpt" cellpadding="1" style="width:100%; border:none;" >
 
 		<p:row style="border:none;">
 				<p:column style="border:none;">
-				<h:outputLabel for="txtCodigo" value="Codigo"/>
+					<h:outputLabel for="txtCodigo" value="Codigo"/>
 				</p:column>
 				<p:column style="border:none;">
-				<h:inputText id="txtCodigo" value="#{dto.codigo}" placeholder="Codigo" styleClass="form-control"/>			
+					<h:inputText id="txtCodigo" value="#{dto.codigo}" placeholder="Codigo" styleClass="form-control"/>			
 				</p:column>
 				<p:column style="border:none;">
-				<h:outputLabel for="txtDesc" value="Descripcion"/>
+					<h:outputLabel for="txtDesc" value="Descripcion"/>
 				</p:column>
-				<p:column colspan="3" width="100%" style="border:none;">					
+				<p:column colspan="#{(dto.padre eq null?(dto.id ne null?3:1):1) }" width="100%" style="border:none;">					
 					<h:inputText id="txtDesc" value="#{dto.descripcion}" placeholder="Descripcion" styleClass="form-control" style="width:100%;"/>
-				</p:column>			
+				</p:column>
+				<p:column style="border:none;" rendered="#{dto.padre ne null or dto.id eq null}">
+					<h:outputLabel for="txtPadre" value="Padre"/>
+				</p:column>
+				<p:column style="border:none;" rendered="#{dto.padre ne null or dto.id eq null}">
+					<h:inputText id="txtPadre" value="#{dto.padre.codigo}" placeholder="Padre" styleClass="form-control"/>			
+				</p:column>
+							
 		</p:row>
 
 		<p:row style="border:none;">		
 				<p:column style="border:none;">
-				<h:outputLabel for="txtMB" value="Managed Bean"/>
+					<h:outputLabel for="txtMB" value="Managed Bean"/>
 				</p:column>
 				<p:column style="border:none;">
-				<h:inputText id="txtMB" value="#{dto.managedBean}" placeholder="Managed Bean" styleClass="form-control"/>
+					<h:inputText id="txtMB" value="#{dto.managedBean}" placeholder="Managed Bean" styleClass="form-control"/>
 				</p:column>
 				<p:column style="border:none;">
-				<h:outputLabel for="txtIcon" value="Icono"/>
+					<h:outputLabel for="txtIcon" value="Icono"/>
 				</p:column>
 				<p:column style="border:none;">
-				<h:inputText id="txtIcon" value="#{dto.icono}" placeholder="Icono" styleClass="form-control"/>
+					<h:inputText id="txtIcon" value="#{dto.icono}" placeholder="Icono" styleClass="form-control"/>
 				</p:column>
 				<p:column style="border:none;">
-				<h:outputLabel for="txtTipo" value="Tipo"/>
+					<h:outputLabel for="lstTipo" value="Tipo"/>
 				</p:column>
-				<p:column style="border:none;">
-				<h:inputText id="txtTipo" value="#{dto.tipo}" placeholder="Tipo" styleClass="form-control"/>
+				<p:column style="border:none;">				
+					<h:panelGrid columns="2" width="100%">
+						<h:selectOneMenu id="lstTipo" value="#{dto.tipo}" editable="false" styleClass="form-control">
+							<p:ajax update="lblTipo" />
+				            <f:selectItems value="#{mb.mapTipo}" var="tp" itemLabel="#{tp.value}" itemValue="#{tp.key}" />
+				            <h:column>
+				            	<h:outputText value="#{tp.value}"/>
+				            </h:column>
+				            <h:column>
+				            	<h:outputText value="#{tp.key}"/>
+				            </h:column>
+				        </h:selectOneMenu>
+				        
+				        <h:outputText id="lblTipo" value="#{dto.tipo.key}" styleClass="form-control" style="width:100%;" />
+			        </h:panelGrid>
 				</p:column>
 		</p:row>
 		
 		<p:row style="border:none;">		
 				<p:column style="border:none;">
-				<h:outputLabel for="txtAlist" value="Accion Busqueda"/>
+					<h:outputLabel for="txtAlist" value="Accion Busqueda"/>
 				</p:column>
 				<p:column style="border:none;">
-				<h:inputText id="txtAlist" value="#{dto.accionListar}" placeholder="Accion Busqueda" styleClass="form-control"/>
+					<h:inputText id="txtAlist" value="#{dto.accionListar}" placeholder="Accion Busqueda" styleClass="form-control"/>
 				</p:column>
 				<p:column style="border:none;">
-				<h:outputLabel for="txtAEdit" value="Accion Edicion"/>
+					<h:outputLabel for="txtAEdit" value="Accion Edicion"/>
 				</p:column>
 				<p:column style="border:none;">
-				<h:inputText id="txtAEdit" value="#{dto.accionEditar}" placeholder="Accion Edicion" styleClass="form-control"/>
+					<h:inputText id="txtAEdit" value="#{dto.accionEditar}" placeholder="Accion Edicion" styleClass="form-control"/>
 				</p:column>
 				<p:column style="border:none;">
-				<h:outputLabel for="txtAnew" value="Accion Crear"/>
+					<h:outputLabel for="txtAnew" value="Accion Crear"/>
 				</p:column>
 				<p:column style="border:none;">
-				<h:inputText id="txtAnew" value="#{dto.accionCrear}" placeholder="Accion Crear" styleClass="form-control"/>
+					<h:inputText id="txtAnew" value="#{dto.accionCrear}" placeholder="Accion Crear" styleClass="form-control"/>
 				</p:column>
 		</p:row>
 		

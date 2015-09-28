@@ -63,7 +63,7 @@ public class SeguridadServiceImpl implements SeguridadService {
 	}
 	
 	public ModuloDTO obtenerModuloPorId(Long id) throws Exception{
-		return seguridadDao.findById(id, ModuloDTO.class);
+		return seguridadDao.obtenerModuloPorId(id);
 	}
 	
 	public ModuloDTO obtenerModuloBienvenidaPorUsuario(UsuarioSucursalDTO usuarioAutenticado) throws Exception{

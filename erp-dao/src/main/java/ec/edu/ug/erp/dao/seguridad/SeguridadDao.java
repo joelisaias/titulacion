@@ -33,6 +33,7 @@ public interface SeguridadDao extends GenericDAO<GenericSeguridadDTO<?>>{
 	public UsuarioDTO findByUserName(String username) throws Exception;
 	public Collection<RolDTO> findRolesByUrl(String url) throws Exception;
 	public ModuloDTO obtenerModuloBienvenidaPorUsuario(UsuarioSucursalDTO usuarioAutenticado) throws Exception;
-	public List<ModuloDTO> obtenerListModulos(ModuloDTO filter,PaginationTemplate pagination)throws Exception;
+	public List<ModuloDTO> obtenerListModulos(ModuloDTO filter,PaginationTemplate pagination)throws Exception;	
+	public ModuloDTO obtenerModuloPorId(Long id) throws Exception;
 	
 }

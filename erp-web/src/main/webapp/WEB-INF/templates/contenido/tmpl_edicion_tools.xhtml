@@ -16,10 +16,15 @@
 				<span class="ui-separator"> <span
 					class="ui-icon ui-icon-grip-dotted-vertical" />
 				</span>
-				<p:commandButton type="button" value="Nuevo" icon="fa fa-plus" />
-				<p:commandButton type="button" value="Editar" icon="fa fa-edit" />
-				<p:commandButton type="button" value="Eliminar" icon="fa fa-minus" />
+				<p:commandButton value="Nuevo" 	  icon="fa fa-plus"  actionListener="#{mb.actionCreateRedirect(currentOption)}" update="#{tabContent}"/>
+				<p:commandButton value="Eliminar" icon="fa fa-minus" actionListener="#{mb.actionDelete(currentOption)}"   	    update="#{tabContent}" />
 
+				<span class="ui-separator"> <span
+					class="ui-icon ui-icon-grip-dotted-vertical" />
+				</span>
+				
+				<p:commandButton value="Guardar" icon="fa fa-save" process="#{saveProcess},@this" actionListener="#{mb.actionSave}" update="#{tabContent}" partialSubmit="true" ajax="true"/>
+				
 				<span class="ui-separator"> <span
 					class="ui-icon ui-icon-grip-dotted-vertical" />
 				</span>

@@ -84,6 +84,8 @@ public abstract class DTOTemplateMB<DTO extends GenericDTO<?>> extends TemplateM
 	public abstract DTO 	  actionEdit(Long id);
 	public abstract DTO 	  actionNew();
 	public abstract void 	  actionDelete(DTO dto);
+	public abstract void 	  onRedirect();
+	public abstract DTO 	  actionSave(DTO dto);
 	
 	public abstract TipoTemplate initSearchTemplate();
 	public abstract TipoTemplate initEditTemplate();
@@ -111,23 +113,33 @@ public abstract class DTOTemplateMB<DTO extends GenericDTO<?>> extends TemplateM
 		};
 		
 	}	
-	public void actionNew(ActionEvent evt){
-		setCurrentDTO(actionNew());		
+	public void actionCreateRedirect(ModuloDTO opcionActual){
+		setCurrentDTO(actionNew());	
+		setOpcionActual(opcionActual);
+		setTargetURL(getUrlCrear()!=null?getUrlCrear():getUrlEditar());
+		onRedirect();
 	}
 	
 
-	public void actionDelete(ActionEvent evt){
-				
+	public void actionDelete(ModuloDTO opcionActual){
+		setOpcionActual(opcionActual);
+		setTargetURL(getUrlListar());
+		actionDelete(currentDTO);
 	}
 	
 	public void actionEditRedirect(ModuloDTO opcionActual){
 		setOpcionActual(opcionActual);
 		setTargetURL(getUrlEditar());
+		onRedirect();
 	}
 	
 	public void actionGoBack(ModuloDTO opcionActual){
 		setOpcionActual(opcionActual);
 		setTargetURL(getUrlListar());				
+	}
+	
+	public void actionSave(ActionEvent evt){
+		currentDTO=actionSave(currentDTO);
 	}
 	
 	

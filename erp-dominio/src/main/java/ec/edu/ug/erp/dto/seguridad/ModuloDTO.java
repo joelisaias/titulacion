@@ -245,11 +245,10 @@ public class ModuloDTO extends GenericSeguridadDTO<ModuloDTO>{
 		private String val;
 		private String labelKey;
 		
-		public static Map<String, Tipo> LABELED_MAP;
+		public static Map<String, Tipo> MAP;
 		
 		public static final List<Tipo> LIST =Arrays.asList(Tipo.values());
 		public static final List<Tipo> LIST_PARENTS =Arrays.asList(MODULO,WELCOMEPAGE);
-
 		private Tipo(String value) {
 			this.val = value;
 			this.labelKey = StringValuedEnumReflect.getLabelKeyFromEnum(this);

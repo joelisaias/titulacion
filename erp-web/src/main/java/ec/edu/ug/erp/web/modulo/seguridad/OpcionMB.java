@@ -1,13 +1,16 @@
 package ec.edu.ug.erp.web.modulo.seguridad;
 
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 import ec.edu.ug.erp.dto.seguridad.ModuloDTO;
+import ec.edu.ug.erp.dto.seguridad.ModuloDTO.Tipo;
 import ec.edu.ug.erp.util.dao.PaginationTemplate;
 import ec.edu.ug.erp.util.dto.generic.impl.GenericDTO.Estado;
 
@@ -71,7 +74,24 @@ public class OpcionMB extends GenericSeguridadMB<ModuloDTO> {
 
 	@Override
 	public void actionDelete(ModuloDTO dto) {
-		addMessageInfo("DELETING...");
+		addMessageInfo("DELETING..."+dto);		
+	}
+	
+	@Override
+	public ModuloDTO actionSave(ModuloDTO dto) {
+		try {
+			dto=seguridadService.saveModulo(dto);
+			addMessageInfo("Guardar Opcion:","Opcion guardada Exitosamente.");
+			return dto;
+		} catch (Exception e) {
+			addMessageError("Guardar Opcion Error:",e.getMessage());
+		}
+		return null;
+	}
+	
+	@Override
+	public void onRedirect() {		
+		
 	}
 
 	
@@ -83,6 +103,18 @@ public class OpcionMB extends GenericSeguridadMB<ModuloDTO> {
 	@Override
 	public TipoTemplate initEditTemplate() {
 		return TipoTemplate.CENTRO_NORTE;
+	}
+	
+	public Map<String, Tipo> getMapTipo(){		
+		Tipo.MAP=new HashMap<String, ModuloDTO.Tipo>();		
+		for(Tipo tipo:Tipo.LIST){
+			Tipo.MAP.put(tipo.getValue(), tipo);
+		}		
+		return Tipo.MAP;
+	}
+	
+	public List<Tipo> getListTipo(){
+		return Tipo.LIST;
 	}
 
 	

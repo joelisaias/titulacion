@@ -9,15 +9,9 @@
 	<h:form>
 		<p:toolbar id="tools#{optId}">
 			<f:facet name="left">
-				<p:commandButton type="button" value="Nuevo" icon="fa fa-plus" />
-				<p:commandButton type="button" value="Editar" icon="fa fa-edit" />
-				<p:commandButton type="button" value="Eliminar" icon="fa fa-minus" />
-
-				<span class="ui-separator"> <span
-					class="ui-icon ui-icon-grip-dotted-vertical" />
-				</span>
-
-				<p:commandButton type="button" title="Reporte" icon="fa fa-file-pdf-o" />
+				<p:commandButton value="Nuevo"  	icon="fa fa-plus"  actionListener="#{mb.actionCreateRedirect(currentOption)}" update="#{tabContent}" />
+				<p:commandButton value="Editar" 	icon="fa fa-edit"  actionListener="#{mb.actionEditRedirect(currentOption)}"   update="#{tabContent}" />
+				<p:commandButton value="Eliminar" 	icon="fa fa-minus" actionListener="#{mb.actionDelete(currentOption)}"   	  update="#{tabContent}"/>				
 			</f:facet>
 		</p:toolbar>
 	</h:form>

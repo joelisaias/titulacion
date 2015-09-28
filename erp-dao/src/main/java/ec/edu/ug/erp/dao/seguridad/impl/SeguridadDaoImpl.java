@@ -275,6 +275,22 @@ public class SeguridadDaoImpl extends GenericDAOImpl<GenericSeguridadDTO<?>> imp
 		
 		return findByCriteria(criteria,pagination);
 	}
+	
+	/**
+	 * Metodo para obtener modulo por ID
+	 * @author Joel Alvarado
+	 * @param id
+	 * @return
+	 * @throws Exception
+	 */
+	public ModuloDTO obtenerModuloPorId(Long id) throws Exception{
+		DetachedCriteria criteria=DetachedCriteria.forClass(ModuloDTO.class,ALIAS_MODULO);
+		DAOUtils.addLeftJoins(criteria, FIELD_PADRE);		
+		criteria.add(Restrictions.eq(FIELD_ID,id));			
+		return findFirstByCriteria(criteria);
+	}
+	
+	
 
 	
 	
