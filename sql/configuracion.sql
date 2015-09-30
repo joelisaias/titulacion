@@ -106,7 +106,7 @@ INSERT INTO seguttarea(
 SELECT NEXTVAL('segustarea') AS ID, 'TAREA ADMIN '||codigo AS descripcion, 'A' ESTADO, now() AS fechacreacion , null AS fechamodificacion, null AS acciongenerica, 
             'S' AS anular, 'S' AS autorizar, 'T'||codigo AS codigo, 'S' AS crear, 'S' AS duplicar, 'S' AS editar, 'S' AS eliminar, 
             'S' AS enviar, 'S' AS generar, 'S' AS imprimir, 'S' AS listar, 'S' AS procesar,'S' AS rechazar,'S' AS recuperar, 
-            'S' reportar, 'S' reversar, 'S' tipo,'T' ver, ID AS modulo_id
+            'S' reportar, 'S' reversar, 'T' tipo,'S' ver, ID AS modulo_id
   FROM segutmodulo;
   
   
