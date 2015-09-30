@@ -38,14 +38,24 @@ public class HtmlMenuComponent extends UIComponentBase {
 	public static final String HTML_LI="li";
 	public static final String HTML_DIV="div";
 	public static final String HTML_SPAN="span";
+	public static final String HTML_INPUT="input";
+	public static final String HTML_BUTTON="button";
 	public static final String HTML_ATTR_ID="id";
+	public static final String HTML_ATTR_TYPE="type";
 	public static final String HTML_ATTR_CLASS="class";
 	public static final String HTML_ATTR_STYLE="style";
 	public static final String HTML_ATTR_HREF="href";
 	
 	public static final String COL_MENU_CLASS="col-xs-2 col-sm-2";
 	public static final String MAIN_MENU_CLASS="nav main-menu";
+	public static final String SEARCH_MENU_CLASS="sidebar-search";
+	public static final String SEARCH_INPUT_CLASS="input-group custom-search-form";
+	public static final String FORMCONTROL_CLASS="form-control";
+	public static final String INPUTGROUPBTN_CLASS="input-group-btn";
+	public static final String BTNDEFAULT_CLASS="btn btn-default";
+	public static final String FA_SEARCH_CLASS="fa fa-search";
 	public static final String SUBMENU_CLASS="dropdown";
+	public static final String SUBMENU_ICON_CLASS="fa arrow";
 	public static final String SUBMENU_TOGGLE_CLASS="dropdown-toggle";
 	public static final String SUBMENU_LABEL_CLASS="hidden-xs";
 	public static final String SUBMENU_CHILD_CLASS="dropdown-menu";
@@ -53,10 +63,10 @@ public class HtmlMenuComponent extends UIComponentBase {
 	public static final String HREF_NONE="#";
 	public static final String STRING_EMPTY="";
 	public static final String ID_VALUE="sidebar-left";
-	public static final String DEFAULT_SUBMENU_ICON="fa fa-angle-down";
-	public static final String DEFAULT_MENUITEM_ICON="fa fa-angle-right";
+	public static final String DEFAULT_SUBMENU_ICON="fa fa-list";
+	public static final String DEFAULT_MENUITEM_ICON="fa fa-angle-double-right";
 	public static final String STYLE_HIDDEN="display:none";
-	
+
 	
 	
 	
@@ -79,6 +89,28 @@ public class HtmlMenuComponent extends UIComponentBase {
 		writer.writeAttribute(HTML_ATTR_CLASS, COL_MENU_CLASS, null);
 		writer.startElement(HTML_UL, this);
 		writer.writeAttribute(HTML_ATTR_CLASS, MAIN_MENU_CLASS, null);
+		
+		writer.startElement(HTML_LI, this);
+		writer.writeAttribute(HTML_ATTR_CLASS, SEARCH_MENU_CLASS, null);
+		writer.startElement(HTML_DIV, this);
+		writer.writeAttribute(HTML_ATTR_CLASS, SEARCH_INPUT_CLASS, null);
+		writer.startElement(HTML_INPUT, this);
+		writer.writeAttribute(HTML_ATTR_CLASS, FORMCONTROL_CLASS, null);
+		writer.endElement(HTML_INPUT);
+		writer.startElement(HTML_SPAN, this);
+		writer.writeAttribute(HTML_ATTR_CLASS, INPUTGROUPBTN_CLASS, null);
+		writer.startElement(HTML_BUTTON, this);
+		writer.writeAttribute(HTML_ATTR_CLASS, BTNDEFAULT_CLASS, null);
+		writer.writeAttribute(HTML_ATTR_TYPE, HTML_BUTTON, null);
+		writer.startElement(HTML_I, this);
+		writer.writeAttribute(HTML_ATTR_CLASS, FA_SEARCH_CLASS, null);
+		writer.endElement(HTML_I);
+		writer.endElement(HTML_BUTTON);
+		writer.endElement(HTML_SPAN);
+		writer.endElement(HTML_DIV);		
+		writer.endElement(HTML_LI);		
+		
+		
 		//creacion de submenus
 		encodeModel(writer,model);
 
@@ -116,6 +148,9 @@ public class HtmlMenuComponent extends UIComponentBase {
 				writer.writeAttribute(HTML_ATTR_CLASS, SUBMENU_LABEL_CLASS, null);
 				writer.writeText(submenu.getLabel()!=null?submenu.getLabel():STRING_EMPTY, null);
 				writer.endElement(HTML_SPAN);		
+				writer.startElement(HTML_SPAN, this);
+				writer.writeAttribute(HTML_ATTR_CLASS, SUBMENU_ICON_CLASS, null);
+				writer.endElement(HTML_SPAN);		
 				writer.endElement(HTML_A);
 				writer.startElement		(HTML_UL		, this);
 				writer.writeAttribute	(HTML_ATTR_CLASS, SUBMENU_CHILD_CLASS, null);
@@ -150,12 +185,12 @@ public class HtmlMenuComponent extends UIComponentBase {
 				writer.writeAttribute(HTML_ATTR_CLASS, LINK_CLASS, null);
 				writer.writeAttribute(HTML_ATTR_HREF, HREF_NONE, null);
 				writer.startElement(HTML_I, this);
-				writer.writeAttribute(HTML_ATTR_CLASS, item.getIcon()!=null?item.getIcon():STRING_EMPTY, null);
+				writer.writeAttribute(HTML_ATTR_CLASS, item.getIcon()!=null?item.getIcon():DEFAULT_MENUITEM_ICON, null);
 				writer.endElement(HTML_I);		
 				writer.startElement(HTML_SPAN, this);
 				if(item.getIcon()!=null)
 					writer.writeAttribute(HTML_ATTR_CLASS,SUBMENU_LABEL_CLASS, null);
-				writer.writeText(item.getValue()!=null?item.getValue():DEFAULT_MENUITEM_ICON, null);
+				writer.writeText(item.getValue()!=null?item.getValue():STRING_EMPTY, null);
 				writer.endElement(HTML_SPAN);
 				writer.startElement(HTML_SPAN, this);
 				writer.writeAttribute(HTML_ATTR_STYLE,STYLE_HIDDEN, null);

@@ -9,6 +9,27 @@
 //////////////////////////////////////////////////////
 //////////////////////////////////////////////////////
 $(document).ready(function () {
+	
+	
+	var template = {
+			 menu:$('#sidebar-left')
+			,menuContent:$('.nav.main-menu')
+			,highlightMenu: function(){
+				this.menuContent.addClass('hover');
+			}
+			,unhighlightMenu: function(){
+				this.menuContent.removeClass('hover');
+			}
+	};
+	
+	template.menu.on("mouseenter", function() {
+        template.highlightMenu();
+	})
+	.on("mouseleave", function() {
+        template.unhighlightMenu();
+	});
+	
+	
 	$('body').on('click', '.show-sidebar', function (e) {
 		e.preventDefault();
 		$('div#main').toggleClass('sidebar-show');
@@ -167,6 +188,9 @@ $(document).ready(function () {
 		
 		
 	});
+	
+	
+    
 	
 	
 	

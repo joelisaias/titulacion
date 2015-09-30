@@ -9,21 +9,6 @@
 	<h:form>
 
 	
-<!-- 		<div id="modalbox">
-			<div class="devoops-modal">
-				<div class="devoops-modal-header">
-					<div class="modal-header-name">
-						<span>Basic table</span>
-					</div>
-					<div class="box-icons">
-						<a class="close-link"> <i class="fa fa-times"></i>
-						</a>
-					</div>
-				</div>
-				<div class="devoops-modal-inner"></div>
-				<div class="devoops-modal-bottom"></div>
-			</div>
-		</div> -->
 		<header class="navbar">
 			<div class="container-fluid">
 				<div class="row">
@@ -43,34 +28,6 @@
 					<div id="top-panel" class="col-xs-12 col-sm-10">
 						<div class="row">
 							<div class="col-xs-8 col-sm-4">
-								<!-- 							 
-								<ul class="nav navbar-nav panel-menu">
-									<li class="dropdown empresa"><a href="#"
-										class="dropdown-toggle" data-toggle="dropdown"> <i
-											class="fa fa-building"></i> <span class="badge">#{usuarioSesionMB.empresa.descripcion}</span>
-									</a>
-										<ul class="dropdown-menu">
-											<li><a href="#"> <span>#{usuarioSesionMB.empresa.descripcion}</span></a></li>
-
-
-										</ul></li>
-								
-									<li class="dropdown empresa"><a href="#"
-										class="dropdown-toggle" data-toggle="dropdown"> <i
-											class="fa fa-building-o"></i> <span class="badge empresa">#{usuarioSesionMB.usuarioSucursal.sucursal.descripcion}</span>
-									</a>
-										<ul class="dropdown-menu">
-											<ui:repeat var="suc"
-												value="#{usuarioSesionMB.usuariosSucursal}">
-												<li><a href="#"> <span>#{suc.sucursal.codigo}
-															- #{suc.sucursal.descripcion}</span></a></li>
-											</ui:repeat>
-
-										</ul></li> 
-								</ul>
-								-->
-
-
 								<div id="search">
 
 									<input type="text" placeholder="search" /> <i
@@ -113,22 +70,6 @@
 
 
 
-									<!-- 
-									
-									<li class="hidden-xs"><a href="index.jsf"
-										class="modal-link"> <i class="fa fa-bell"></i> <span
-											class="badge">7</span>
-									</a></li>
-									<li class="hidden-xs"><a class="ajax-link"
-										href="/ajax/calendar.html"> <i class="fa fa-calendar"></i>
-											<span class="badge">7</span>
-									</a></li>
-									<li class="hidden-xs"><a href="ajax/page_messages.html"
-										class="ajax-link"> <i class="fa fa-envelope"></i> <span
-											class="badge">7</span>
-									</a></li>
-									
-									 -->
 
 									<li class="dropdown"><a href="#"
 										class="dropdown-toggle account" data-toggle="dropdown">
@@ -144,24 +85,13 @@
 									</a>
 										<ul class="dropdown-menu">
 											<li><a href="#"> <i class="fa fa-user"></i> <span>Profile</span>
-											</a></li>
-											<li><a href="/ajax/page_messages.html" class="ajax-link">
-													<i class="fa fa-envelope"></i> <span>Messages</span>
-											</a></li>
-											<li><a href="/ajax/gallery_simple.html"
-												class="ajax-link"> <i class="fa fa-picture-o"></i> <span>Albums</span>
-											</a></li>
-											<li><a href="/ajax/calendar.html" class="ajax-link">
-													<i class="fa fa-tasks"></i> <span>Tasks</span>
-											</a></li>
+											</a></li>											
 											<li><a href="#"> <i class="fa fa-cog"></i> <span>Settings</span>
 											</a></li>
 											<li><h:commandLink action="#{loginMB.logout}">
 													<i class="fa fa-power-off"></i>
 													<span>Logout</span>
-												</h:commandLink> <!-- <a href="#"> <i class="fa fa-power-off"></i> <span>Logout</span>
-											</a>
-											 --></li>
+											</h:commandLink></li>
 										</ul></li>
 								</ul>
 							</div>
