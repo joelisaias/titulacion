@@ -48,6 +48,16 @@ h1, .h1, h2, .h2, h3, .h3 {
   background-position: right 20px;
   text-decoration: none;
 }
+
+#logo-erp span {
+  	color: #525252;
+/* 	font-family: "Righteous", cursive; */
+	font-family: 'exoregular', "Trebuchet MS", Arial, Helvetica, sans-serif;
+	display: block;
+	font-size: 20px;
+	line-height: 50px;	
+  }
+
 #toogler {  
  /*  background:#505559; */
   padding-right: 0;
@@ -108,12 +118,42 @@ a.show-sidebar:hover {
 
 #sidebar-left .nav.main-menu li a i.fa {
 	font-size: 25px;	
-	margin-right: 25px;
-	
+	margin-right: 25px;	
 }
+
 #sidebar-left .nav.main-menu >li{
 	border-top:solid 1px #404a4e;
 }
+
+/*fonts*/
+.boldFont{font-family: 'exosemibold', "Trebuchet MS", Arial, Helvetica, sans-serif;}
+.boldItalicFont{font-family: 'exobolditalic', "Trebuchet MS", Arial, Helvetica, sans-serif;}
+.mediumFont{font-family: 'exomedium', "Trebuchet MS", Arial, Helvetica, sans-serif;}
+.regularFont{font-family: 'exoregular', "Trebuchet MS", Arial, Helvetica, sans-serif;}
+/*font sizes*/
+.fontSize34{font-size:34px;}
+.fontSize30{font-size:30px;}
+.fontSize24{font-size:24px;}
+.fontSize21{font-size:21px;}
+.fontSize18{font-size:18px;}
+.fontSize14{font-size:14px;}
+
+#sidebar-left .nav.main-menu >li > input{ padding:6px; background-color:#354044; outline:none; border:0px; border:none; color:#9ba5ac; border-radius:20px;
+	-webkit-box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.5); -moz-box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.5); box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,0.5);}
+#sidebar-left .nav.main-menu >li > img{width:30px; height:auto; float:left;}
+
+
+input.searchInput {
+    padding-left: 30px !important;
+}
+
+#sidebar-left .nav.main-menu li.sidebar-search > i {
+	font-size: 15px;	
+	margin-left: 15px;
+	margin-right: 25px;
+	color:#9ba5ac;	
+}
+
 
 
 #content {
@@ -155,7 +195,8 @@ a.show-sidebar:hover {
 }
 .nav.main-menu > li > a:hover, .nav.main-menu > li > a:focus, .nav.main-menu > li.active > a, .nav.main-menu .open > a, .nav.main-menu .open > a:hover, .nav.main-menu .open > a:focus, .dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover, .dropdown-menu > li.active > a,
 .nav.msg-menu > li > a:hover, .nav.msg-menu > li > a:focus, .nav.msg-menu > li.active > a, .nav.msg-menu .open > a, .nav.msg-menu .open > a:hover, .nav.msg-menu .open > a:focus {
-  background:rgba(0, 0, 0, 0.1);
+  /* background:rgba(0, 0, 0, 0.1); */
+  background:#20282b;
   color:#f0f0f0;
 }
 .nav.main-menu a.active, .nav.msg-menu a.active {
@@ -220,6 +261,7 @@ a.show-sidebar:hover {
 
 .main-menu .sidebar-search {
     padding: 15px;
+    width: 100%;
 }
 
 
@@ -302,7 +344,8 @@ a.show-sidebar:hover {
   margin-top: 8px;
   padding: 5px;
   font-size: 20px;
-  color: #337ab7;
+  /* color: #337ab7; */
+  color: #525252;
   line-height: 1em;
   vertical-align: top;
   -webkit-transition: 0.05s;
@@ -312,14 +355,17 @@ a.show-sidebar:hover {
 }
 .panel-menu i.pull-right {
   /* color: #121212; */
-  color: #337ab7;
+  /* color: #337ab7; */
+  color: #525252;
   border: 0 !important;
   box-shadow: none;
   font-size: 16px;
   background: none !important;
 }
 .badge{
-	color: #337ab7;	
+	/* color: #337ab7; */
+	color: #525252;	
+	font-family: 'exoregular', "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
 
 .panel-menu .empresa .badge  {
@@ -338,10 +384,12 @@ a.show-sidebar:hover {
 }
 .user-mini > span {
   display: block;
-  font-size: 12px;
+  font-size: 13px;
   /* color:#9C9A78; */
-  color:#337ab7;
+  /* color:#337ab7; */
+  color: #525252;
   margin-bottom: -4px;
+  font-family: 'exoregular', "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
 .user-mini > span.welcome {
   font-weight: bold;
@@ -356,6 +404,7 @@ a.show-sidebar:hover {
   right: 0;
   left: auto;
   min-width: 100%;
+  font-family: 'exoregular', "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
 .panel-menu .dropdown-menu > li > a {
   padding:5px 10px !important;
@@ -371,6 +420,7 @@ a.show-sidebar:hover {
   display: inline-block;
   text-align: center;
   vertical-align: middle;
+  
 }
 .well {
   padding:15px;
