@@ -7,44 +7,52 @@ body {
 
 
 
+
+.col-xs-8 ,.col-sm-4{
+	padding-left: 0px;
+}
+
+
+
 #head-info{
   background-color:#313b3f; 
   position:relative;
   padding-left: 0;
+  padding-right: 0px;
 }
+
+
 #logo {
-  
-  padding-left: 0;
-  float: left;
-}
-
-#logo a {
-  color: #D8D8D8;
-  -webkit-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -o-transition: 0.5s;
-  transition: 0.5s;
-}
-
-#logo a:hover {
-  background-position: right 20px;
-  text-decoration: none;
+  margin-left:0px; 
+  padding-left: 0px;
 }
 
 #logo-erp span {
-  	color: #0b66b1;
+	color:#9ba5ac;;
 	font-family: 'exoregular', "Trebuchet MS", Arial, Helvetica, sans-serif;
 	display: block;
-	font-size: 20px;
-	line-height: 50px;	
+	font-size: 23px;
+	line-height: 50px;
+	padding-left: 20px;	
   }
 
+#logo-erp span.hover {
+	color:#25aae1;;
+}
+
+
 #toogler {  
-  padding-right: 0;
-  float: right;
+  padding-left: 10px;
+  float: left;
   vertical-align: middle;
   padding-top: 15px;
+  padding-right: 20px;
 }
+
+#toogler a.show-sidebar:hover {
+  color:#25aae1;
+}
+
 .navbar {
   margin: 0;
   border: 0;
@@ -71,9 +79,7 @@ a.show-sidebar {
   -o-transition: 0.2s;
   transition: 0.2s;
 }
-a.show-sidebar:hover {
-  color:#25aae1;
-}
+
 #sidebar-left {
   position:relative;
   z-index: inherit;
@@ -102,6 +108,7 @@ a.show-sidebar:hover {
 #sidebar-left .nav.main-menu >li{
 	border-top:solid 1px #404a4e;
 }
+
 
 /*fonts*/
 .boldFont{font-family: 'exosemibold', "Trebuchet MS", Arial, Helvetica, sans-serif;}

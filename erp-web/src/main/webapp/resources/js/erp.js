@@ -14,11 +14,14 @@ $(document).ready(function () {
 	var template = {
 			 menu:$('#sidebar-left')
 			,menuContent:$('.nav.main-menu')
+			,erpLogo:$('#logo-erp span')
 			,highlightMenu: function(){
 				this.menuContent.addClass('hover');
+				this.erpLogo.addClass('hover');
 			}
 			,unhighlightMenu: function(){
 				this.menuContent.removeClass('hover');
+				this.erpLogo.removeClass('hover');
 			}
 	};
 	
