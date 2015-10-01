@@ -32,7 +32,7 @@ public class MonedaDTO extends GenericGeneralDTO<MonedaDTO> {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator=ISequenceGenerators.MONEDA)
 	private Long id;
 
-	@Column(name=CODIGO)
+	@Column(name=CODIGO,unique=true)
 	private String codigo;
 	
 	@Column(name=SIMBOLO)

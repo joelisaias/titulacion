@@ -17,6 +17,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.Type;
 
@@ -29,7 +30,7 @@ import ec.edu.ug.erp.util.type.StringValuedEnumReflect;
 import ec.edu.ug.erp.util.type.StringValuedEnumType;
 
 @Entity
-@Table(name=ITableNames.MODULO,schema=ISchemaNames.SEGURIDAD)
+@Table(name=ITableNames.MODULO,schema=ISchemaNames.SEGURIDAD,uniqueConstraints={@UniqueConstraint(columnNames={"codigo","estado"})})
 public class ModuloDTO extends GenericSeguridadDTO<ModuloDTO>{
 	
 	private static final long serialVersionUID = 9029604394724370809L;

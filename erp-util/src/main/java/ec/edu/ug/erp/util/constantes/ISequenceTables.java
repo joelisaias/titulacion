@@ -38,7 +38,12 @@ public interface ISequenceTables {
 	 * COMPRAS
 	 */
 	public static final String ORDEN_COMPRA="COMPSORDEN_COMPRA";
-
+	public static final String ORDEN_COMPRA_DETALLE="COMPSORDEN_COMPRA_DETALLE";
+	public static final String RECEPCION_COMPRA="COMPSRECEPCION_COMPRA";
+	public static final String RECEPCION_COMPRA_DETALLE="COMPSRECEPCION_COMPRA_DETALLE";
+	public static final String FACTURA_COMPRA="COMPSFACTURA_COMPRA";
+	public static final String FACTURA_COMPRA_DETALLE="COMPSFACTURA_COMPRA_DETALLE";
+	
 	
 	
 }

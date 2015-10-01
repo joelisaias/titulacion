@@ -54,7 +54,7 @@ public class DivisionGeograficaDTO extends GenericGeneralDTO<DivisionGeograficaD
 	@ManyToOne(fetch=FetchType.LAZY)
 	private MonedaDTO moneda;
 
-	@Column(name=CODIGO,length=10)
+	@Column(name=CODIGO,length=10,unique=true)
 	private String codigo;
 	
 	@Column(name=TIPO,length=1)

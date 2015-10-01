@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.Type;
 
@@ -26,7 +27,7 @@ import ec.edu.ug.erp.util.type.BooleanToCharType;
 
 
 @Entity
-@Table(name=ITableNames.EMPRESA_PERSONA,schema=ISchemaNames.RRHH)
+@Table(name=ITableNames.EMPRESA_PERSONA,schema=ISchemaNames.RRHH,uniqueConstraints={@UniqueConstraint(columnNames={"codigo","empresa","persona"})})
 public class EmpresaPersonaDTO extends GenericRrhhDTO<EmpresaPersonaDTO> {
 
 	private static final long serialVersionUID = -1889501347202606778L;

@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.Type;
 
@@ -21,7 +22,7 @@ import ec.edu.ug.erp.util.constantes.ITableNames;
 import ec.edu.ug.erp.util.type.BooleanToCharType;
 
 @Entity
-@Table(name=ITableNames.USUARIO_SUCURSAL,schema=ISchemaNames.SEGURIDAD)
+@Table(name=ITableNames.USUARIO_SUCURSAL,schema=ISchemaNames.SEGURIDAD,uniqueConstraints={@UniqueConstraint(columnNames={"usuario","sucursal","estado"})})
 public class UsuarioSucursalDTO extends GenericSeguridadDTO<UsuarioSucursalDTO>{
 	
 	private static final long serialVersionUID = 9029604394724370809L;

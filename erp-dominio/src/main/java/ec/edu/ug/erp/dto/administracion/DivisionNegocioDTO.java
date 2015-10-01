@@ -31,7 +31,7 @@ public class DivisionNegocioDTO extends GenericAdministracionDTO<DivisionNegocio
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator=ISequenceGenerators.DIVISION_NEGOCIO)
 	private Long id;
 
-	@Column(name=CODIGO,length=10)
+	@Column(name=CODIGO,length=10,unique=true)
 	private String codigo;
 	
 	@JoinColumn(name=PADRE_ID)

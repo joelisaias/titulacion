@@ -17,6 +17,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.Type;
 
@@ -30,7 +31,7 @@ import ec.edu.ug.erp.util.type.StringValuedEnumReflect;
 import ec.edu.ug.erp.util.type.StringValuedEnumType;
 
 @Entity
-@Table(name=ITableNames.PERSONA,schema=ISchemaNames.RRHH)
+@Table(name=ITableNames.PERSONA,schema=ISchemaNames.RRHH,uniqueConstraints={@UniqueConstraint(columnNames={"identificacion"})})
 public class PersonaDTO extends GenericRrhhDTO<PersonaDTO> {
 
 	private static final long serialVersionUID = -5170427302770951584L;

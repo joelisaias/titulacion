@@ -6,6 +6,7 @@ public interface ITableFieldNames {
 	public static final String FECHACREACION="FECHACREACION";
 	public static final String FECHAMODIFICACION="FECHAMODIFICACION";
 	public static final String ESTADO="ESTADO";
+	public static final String ESTADO_CHECK="ESTADO IN ('A','I')";
 	public static final String TIPO="TIPO";
 	public static final String CODIGO="CODIGO";	
 	public static final String NATURALEZA="NATURALEZA";

@@ -35,5 +35,10 @@ public interface ISequenceGenerators {
 	 * COMPRAS
 	 */
 	public static final String ORDEN_COMPRA="COMPGORDEN_COMPRA";
-
+	public static final String ORDEN_COMPRA_DETALLE="COMPGORDEN_COMPRA_DETALLE";
+	public static final String RECEPCION_COMPRA="COMPGRECEPCION_COMPRA";
+	public static final String RECEPCION_COMPRA_DETALLE="COMPGRECEPCION_COMPRA_DETALLE";
+	public static final String FACTURA_COMPRA="COMPGFACTURA_COMPRA";
+	public static final String FACTURA_COMPRA_DETALLE="COMPGFACTURA_COMPRA_DETALLE";
+	
 }

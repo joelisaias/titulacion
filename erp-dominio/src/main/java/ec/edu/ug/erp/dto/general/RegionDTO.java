@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import ec.edu.ug.erp.dto.administracion.SucursalDTO;
 import ec.edu.ug.erp.util.constantes.ISchemaNames;
@@ -20,7 +21,7 @@ import ec.edu.ug.erp.util.constantes.ITableNames;
 
 
 @Entity
-@Table(name=ITableNames.REGION,schema=ISchemaNames.GENERAL)
+@Table(name=ITableNames.REGION,schema=ISchemaNames.GENERAL,uniqueConstraints={@UniqueConstraint(columnNames="codigo")})
 public class RegionDTO extends GenericGeneralDTO<RegionDTO> {
 
 	private static final long serialVersionUID = 9029604394724370809L;

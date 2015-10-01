@@ -33,7 +33,7 @@ public class EmpresaDTO extends GenericAdministracionDTO<EmpresaDTO> {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator=ISequenceGenerators.EMPRESA)
 	private Long id;
 
-	@Column(name=CODIGO,length=10)
+	@Column(name=CODIGO,length=10,unique=true)
 	private String codigo;
 	
 	@JoinColumn(name=PERSONA_ID)

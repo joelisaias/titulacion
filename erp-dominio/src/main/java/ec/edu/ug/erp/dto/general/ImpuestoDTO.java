@@ -42,7 +42,7 @@ public class ImpuestoDTO extends GenericGeneralDTO<ImpuestoDTO> {
 	@ManyToOne(fetch=FetchType.LAZY)
 	private DivisionGeograficaDTO pais;
 
-	@Column(name=CODIGO,length=10)
+	@Column(name=CODIGO,length=10,unique=true)
 	private String codigo;
 	
 	@Column(name=PORCENTAJE)

@@ -12,6 +12,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.Check;
 import org.hibernate.annotations.Type;
 
 import ec.edu.ug.erp.util.constantes.IConstantes;
@@ -47,6 +48,7 @@ public abstract class GenericDTO<DTO extends GenericDTO<DTO>> implements IGeneri
 	protected Date fechaModificacion;
 	
 	@Column(name = ESTADO,length=2)
+	@Check(constraints=ESTADO_CHECK)
 	@Type(type=Estado.TYPE)
 	protected Estado estado;
 		

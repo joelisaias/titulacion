@@ -38,6 +38,11 @@ public interface ITableNames {
 	 * COMPRAS
 	 */
 	public static final String ORDEN_COMPRA="COMPTORDEN_COMPRA";
+	public static final String ORDEN_COMPRA_DETALLE="COMPTORDEN_COMPRA_DETALLE";
+	public static final String RECEPCION_COMPRA="COMPTRECEPCION_COMPRA";
+	public static final String RECEPCION_COMPRA_DETALLE="COMPTRECEPCION_COMPRA_DETALLE";
+	public static final String FACTURA_COMPRA="COMPTFACTURA_COMPRA";
+	public static final String FACTURA_COMPRA_DETALLE="COMPTFACTURA_COMPRA_DETALLE";
 	
 	
 }

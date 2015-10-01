@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.core.GrantedAuthority;
@@ -21,7 +22,7 @@ import ec.edu.ug.erp.util.constantes.ISequenceTables;
 import ec.edu.ug.erp.util.constantes.ITableNames;
 
 @Entity
-@Table(name=ITableNames.ROL,schema=ISchemaNames.SEGURIDAD)
+@Table(name=ITableNames.ROL,schema=ISchemaNames.SEGURIDAD,uniqueConstraints={@UniqueConstraint(columnNames={"codigo","estado"})})
 public class RolDTO extends GenericSeguridadDTO<RolDTO> implements GrantedAuthority,ConfigAttribute {
 	
 	private static final long serialVersionUID = 9029604394724370809L;

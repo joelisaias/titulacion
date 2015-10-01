@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import ec.edu.ug.erp.dto.rrhh.EmpresaPersonaDTO;
 import ec.edu.ug.erp.util.constantes.ISchemaNames;
@@ -21,7 +22,7 @@ import ec.edu.ug.erp.util.constantes.ISequenceTables;
 import ec.edu.ug.erp.util.constantes.ITableNames;
 
 @Entity
-@Table(name=ITableNames.USUARIO,schema=ISchemaNames.SEGURIDAD)
+@Table(name=ITableNames.USUARIO,schema=ISchemaNames.SEGURIDAD,uniqueConstraints={@UniqueConstraint(columnNames={"codigo","empresaPersona","estado"})})
 public class UsuarioDTO extends GenericSeguridadDTO<UsuarioDTO>{
 	
 	private static final long serialVersionUID = 9029604394724370809L;
@@ -35,7 +36,7 @@ public class UsuarioDTO extends GenericSeguridadDTO<UsuarioDTO>{
 	@ManyToOne(fetch=FetchType.LAZY)
 	private EmpresaPersonaDTO empresaPersona;
 
-	@Column(name=CODIGO,length=50)
+	@Column(name=CODIGO,length=50,unique=true)
 	private String codigo;
 	
 	@Column(name=CLAVE,length=100)
