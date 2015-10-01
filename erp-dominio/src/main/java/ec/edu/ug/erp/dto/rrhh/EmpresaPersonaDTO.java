@@ -18,6 +18,7 @@ import javax.persistence.UniqueConstraint;
 import org.hibernate.annotations.Type;
 
 import ec.edu.ug.erp.dto.administracion.EmpresaDTO;
+import ec.edu.ug.erp.dto.compras.ProveedorDTO;
 import ec.edu.ug.erp.dto.seguridad.UsuarioDTO;
 import ec.edu.ug.erp.util.constantes.ISchemaNames;
 import ec.edu.ug.erp.util.constantes.ISequenceGenerators;
@@ -65,6 +66,9 @@ public class EmpresaPersonaDTO extends GenericRrhhDTO<EmpresaPersonaDTO> {
 	@OneToMany(mappedBy=FIELD_EMPRESA_PERSONA,fetch=FetchType.LAZY)
 	private List<UsuarioDTO> usuarioDTOs;
 
+	@OneToMany(mappedBy=FIELD_EMPRESA_PERSONA,fetch=FetchType.LAZY)
+	private List<ProveedorDTO> proveedorDTOs;
+	
 	public Long getId() {		
 		return id;
 	}
@@ -98,6 +102,48 @@ public class EmpresaPersonaDTO extends GenericRrhhDTO<EmpresaPersonaDTO> {
 	public void setPersona(PersonaDTO persona) {
 		this.persona = persona;
 	}
+
+	public boolean isCliente() {
+		return cliente;
+	}
+
+	public void setCliente(boolean cliente) {
+		this.cliente = cliente;
+	}
+
+	public boolean isProveedor() {
+		return proveedor;
+	}
+
+	public void setProveedor(boolean proveedor) {
+		this.proveedor = proveedor;
+	}
+
+	public boolean isEmpleado() {
+		return empleado;
+	}
+
+	public void setEmpleado(boolean empleado) {
+		this.empleado = empleado;
+	}
+
+	public List<UsuarioDTO> getUsuarioDTOs() {
+		return usuarioDTOs;
+	}
+
+	public void setUsuarioDTOs(List<UsuarioDTO> usuarioDTOs) {
+		this.usuarioDTOs = usuarioDTOs;
+	}
+
+	public List<ProveedorDTO> getProveedorDTOs() {
+		return proveedorDTOs;
+	}
+
+	public void setProveedorDTOs(List<ProveedorDTO> proveedorDTOs) {
+		this.proveedorDTOs = proveedorDTOs;
+	}
+	
+	
 	
 	
 

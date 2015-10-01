@@ -19,8 +19,8 @@ public final class PaginationTemplate {
 	private int totalPages;
 	private int currentPage;
 	
-	public static final RowsPerPage defaultPageSize=RowsPerPage.ROW_20;
-	public static final RowsPerPage defaultDetailPageSize=RowsPerPage.ROW_15;
+	public static final RowsPerPage defaultPageSize=RowsPerPage.ROW_15;
+	public static final RowsPerPage defaultDetailPageSize=RowsPerPage.ROW_10;
 	
 	public PaginationTemplate(RowsPerPage pageSize){
 		this.pageSize=pageSize.value;		

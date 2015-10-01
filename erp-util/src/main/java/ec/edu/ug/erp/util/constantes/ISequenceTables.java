@@ -43,7 +43,7 @@ public interface ISequenceTables {
 	public static final String RECEPCION_COMPRA_DETALLE="COMPSRECEPCION_COMPRA_DETALLE";
 	public static final String FACTURA_COMPRA="COMPSFACTURA_COMPRA";
 	public static final String FACTURA_COMPRA_DETALLE="COMPSFACTURA_COMPRA_DETALLE";
-	
+	public static final String PROVEEDOR="COMPSPROVEEDOR";	
 	
 	
 }

@@ -40,5 +40,6 @@ public interface ISequenceGenerators {
 	public static final String RECEPCION_COMPRA_DETALLE="COMPGRECEPCION_COMPRA_DETALLE";
 	public static final String FACTURA_COMPRA="COMPGFACTURA_COMPRA";
 	public static final String FACTURA_COMPRA_DETALLE="COMPGFACTURA_COMPRA_DETALLE";
+	public static final String PROVEEDOR="COMPGPROVEEDOR";
 	
 }

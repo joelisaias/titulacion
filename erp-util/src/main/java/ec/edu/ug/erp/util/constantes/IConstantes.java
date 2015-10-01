@@ -60,6 +60,8 @@ public interface IConstantes {
 	public static final String FIELD_USUARIOS_ROLES_FETCH="usuarioRolDTOs";
 	public static final String FIELD_ACIONLISTAR="accionListar";
 	public static final String FIELD_DESCRIPCION="descripcion";
+	public static final String FIELD_PROVEEDOR="proveedor";
+	public static final String ORDEN_COMPRA="ordenCompra";
 	
 	
 	public static final String POINT=".";

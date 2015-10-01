@@ -73,6 +73,28 @@ public interface ITableFieldNames {
 	public static final String SUCURSAL_ID="SUCURSAL_ID";
 	public static final String PREDETERMINADO="PREDETERMINADO";
 	public static final String MANAGEDBEAN="MANAGEDBEAN";
+	public static final String PROVEEDOR_ID="PROVEEDOR_ID";
+	public static final String TIPOCOMPRA="TIPOCOMPRA";
+	public static final String TIPOCOMPRA_CHECK="TIPOCOMPRA IN('L','I')";
+	public static final String NUMEROPEDIDO="NUMEROPEDIDO";
+	public static final String FECHAPEDIDO="FECHAPEDIDO";
+	public static final String FECHAESPERADA="FECHAESPERADA";
+	public static final String FECHALLEGADA="FECHALLEGADA";
+	public static final String FECHAEMBARQUE="FECHAEMBARQUE";
+	public static final String FECHAVENCIMIENTO="FECHAVENCIMIENTO";
+	public static final String FLETE="FLETE";
+	public static final String SEGURO="SEGURO";
+	public static final String BODEGADESTINO_ID="BODEGADESTINO_ID";
+	public static final String PUERTOORIGEN_ID="PUERTOORIGEN_ID";
+	public static final String PUERTODESTINO_ID="PUERTODESTINO_ID";
+	public static final String TIPOTRANSPORTE="TIPOTRANSTORTE";
+	public static final String TIPOTRANSPORTE_CHECK="TIPOTRANSTORTE IN ('M','A','T')";
+	public static final String ETAPACOMPRA="ETAPACOMPRA";
+	public static final String SUBTOTAL="SUBTOTAL";
+	public static final String DESCUENTO="DESCUENTO";
+	public static final String NETO="NETO";
+	public static final String IVA="IVA";
+	public static final String TOTAL="TOTAL";
 	
 	
 }

@@ -43,6 +43,7 @@ public interface ITableNames {
 	public static final String RECEPCION_COMPRA_DETALLE="COMPTRECEPCION_COMPRA_DETALLE";
 	public static final String FACTURA_COMPRA="COMPTFACTURA_COMPRA";
 	public static final String FACTURA_COMPRA_DETALLE="COMPTFACTURA_COMPRA_DETALLE";
+	public static final String PROVEEDOR="COMPTPROVEEDOR";
 	
 	
 }
