@@ -40,6 +40,8 @@ public interface BaseDao<X extends GenericDTO<?>, E extends Serializable> {
     public <T extends X> List<T> findByExample(T instance) throws Exception;
 
     public <T extends X> List<T> findByQuery(String query) throws Exception;
+    
+    public <T extends X> List<T> findByQuery(final String queryString,Object... params)throws Exception;
 
     public <T extends X> List<Map<String, Object>> findMapByQuery(String queryString) throws Exception;
 

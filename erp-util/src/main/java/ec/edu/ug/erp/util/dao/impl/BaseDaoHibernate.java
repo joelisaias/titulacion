@@ -153,6 +153,19 @@ public abstract class BaseDaoHibernate<X extends GenericDTO<?>, E extends Serial
 			throw e;
 		}
 	}
+	
+	@SuppressWarnings("unchecked")
+	public <T extends X> List<T> findByQuery(final String queryString,Object... params)
+			throws Exception {
+		try {
+			final List<T> results = (List<T>) getHibernateTemplate().find(
+					queryString,params);
+			return results;
+		} catch (final Exception e) {
+			throw e;
+		}
+	}
+
 
 	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> findMapByQuery(final String queryString)
