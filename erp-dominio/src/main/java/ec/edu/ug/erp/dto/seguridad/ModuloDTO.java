@@ -45,7 +45,7 @@ public class ModuloDTO extends GenericSeguridadDTO<ModuloDTO>{
 	@ManyToOne(fetch=FetchType.LAZY)
 	private ModuloDTO padre;
 	
-	@Column(name=CODIGO,length=50)
+	@Column(name=CODIGO,length=50,nullable=false)
 	private String codigo;
 	
 	@Column(name=ACCIONLISTAR,length=300)
@@ -60,16 +60,16 @@ public class ModuloDTO extends GenericSeguridadDTO<ModuloDTO>{
 	@Column(name=ICONO,length=50)
 	private String icono;
 	
-	@Column(name=ORDEN)
+	@Column(name=ORDEN,nullable=false)
 	private Integer orden;
 	
-	@Column(name=NIVEL)
+	@Column(name=NIVEL,nullable=false)
 	private Integer nivel;
 	
 	@Column(name=MANAGEDBEAN)
 	private String managedBean;	
 
-	@Column(name=TIPO,length=1)
+	@Column(name=TIPO,length=1,nullable=false)
 	@Type(type=Tipo.TYPE)
 	private Tipo tipo;
 	
