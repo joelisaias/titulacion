@@ -22,12 +22,13 @@ import ec.edu.ug.erp.dto.seguridad.UsuarioDTO;
 import ec.edu.ug.erp.util.constantes.ISchemaNames;
 import ec.edu.ug.erp.util.constantes.ISequenceGenerators;
 import ec.edu.ug.erp.util.constantes.ISequenceTables;
+import ec.edu.ug.erp.util.constantes.ITableFieldNames;
 import ec.edu.ug.erp.util.constantes.ITableNames;
 import ec.edu.ug.erp.util.type.BooleanToCharType;
 
 
 @Entity
-@Table(name=ITableNames.EMPRESA_PERSONA,schema=ISchemaNames.RRHH,uniqueConstraints={@UniqueConstraint(columnNames={"codigo","empresa","persona"})})
+@Table(name=ITableNames.EMPRESA_PERSONA,schema=ISchemaNames.RRHH,uniqueConstraints={@UniqueConstraint(columnNames={ITableFieldNames.EMPRESA_ID,ITableFieldNames.PERSONA_ID})})
 public class EmpresaPersonaDTO extends GenericRrhhDTO<EmpresaPersonaDTO> {
 
 	private static final long serialVersionUID = -1889501347202606778L;

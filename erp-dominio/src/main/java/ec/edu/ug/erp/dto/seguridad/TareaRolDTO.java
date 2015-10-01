@@ -14,10 +14,11 @@ import javax.persistence.UniqueConstraint;
 import ec.edu.ug.erp.util.constantes.ISchemaNames;
 import ec.edu.ug.erp.util.constantes.ISequenceGenerators;
 import ec.edu.ug.erp.util.constantes.ISequenceTables;
+import ec.edu.ug.erp.util.constantes.ITableFieldNames;
 import ec.edu.ug.erp.util.constantes.ITableNames;
 
 @Entity
-@Table(name=ITableNames.TAREA_ROL,schema=ISchemaNames.SEGURIDAD,uniqueConstraints={@UniqueConstraint(columnNames={"tarea","rol","estado"})})
+@Table(name=ITableNames.TAREA_ROL,schema=ISchemaNames.SEGURIDAD,uniqueConstraints={@UniqueConstraint(columnNames={ITableFieldNames.TAREA_ID,ITableFieldNames.ROL_ID,ITableFieldNames.ESTADO})})
 public class TareaRolDTO extends GenericSeguridadDTO<TareaRolDTO>{
 	
 	private static final long serialVersionUID = 9029604394724370809L;

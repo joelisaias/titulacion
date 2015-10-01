@@ -19,10 +19,11 @@ import org.springframework.security.core.GrantedAuthority;
 import ec.edu.ug.erp.util.constantes.ISchemaNames;
 import ec.edu.ug.erp.util.constantes.ISequenceGenerators;
 import ec.edu.ug.erp.util.constantes.ISequenceTables;
+import ec.edu.ug.erp.util.constantes.ITableFieldNames;
 import ec.edu.ug.erp.util.constantes.ITableNames;
 
 @Entity
-@Table(name=ITableNames.ROL,schema=ISchemaNames.SEGURIDAD,uniqueConstraints={@UniqueConstraint(columnNames={"codigo","estado"})})
+@Table(name=ITableNames.ROL,schema=ISchemaNames.SEGURIDAD,uniqueConstraints={@UniqueConstraint(columnNames={ITableFieldNames.CODIGO,ITableFieldNames.ESTADO})})
 public class RolDTO extends GenericSeguridadDTO<RolDTO> implements GrantedAuthority,ConfigAttribute {
 	
 	private static final long serialVersionUID = 9029604394724370809L;

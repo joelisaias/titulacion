@@ -25,13 +25,14 @@ import ec.edu.ug.erp.dto.administracion.EmpresaDTO;
 import ec.edu.ug.erp.util.constantes.ISchemaNames;
 import ec.edu.ug.erp.util.constantes.ISequenceGenerators;
 import ec.edu.ug.erp.util.constantes.ISequenceTables;
+import ec.edu.ug.erp.util.constantes.ITableFieldNames;
 import ec.edu.ug.erp.util.constantes.ITableNames;
 import ec.edu.ug.erp.util.type.StringValuedEnum;
 import ec.edu.ug.erp.util.type.StringValuedEnumReflect;
 import ec.edu.ug.erp.util.type.StringValuedEnumType;
 
 @Entity
-@Table(name=ITableNames.PERSONA,schema=ISchemaNames.RRHH,uniqueConstraints={@UniqueConstraint(columnNames={"identificacion"})})
+@Table(name=ITableNames.PERSONA,schema=ISchemaNames.RRHH,uniqueConstraints={@UniqueConstraint(columnNames={ITableFieldNames.IDENTIFICACION})})
 public class PersonaDTO extends GenericRrhhDTO<PersonaDTO> {
 
 	private static final long serialVersionUID = -5170427302770951584L;
@@ -49,7 +50,7 @@ public class PersonaDTO extends GenericRrhhDTO<PersonaDTO> {
 	@Type(type=TipoIdentificacion.TYPE)
 	private TipoIdentificacion tipoIdentificacion;
 
-	@Column(name=IDENTIFICACION,length=20)	
+	@Column(name=IDENTIFICACION,length=20,unique=true)	
 	private String identificacion;
 	
 	@Column(name=APELLIDOPATERNO,length=200)

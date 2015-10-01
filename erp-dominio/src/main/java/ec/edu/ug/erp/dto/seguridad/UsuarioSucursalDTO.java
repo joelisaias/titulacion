@@ -18,11 +18,12 @@ import ec.edu.ug.erp.dto.administracion.SucursalDTO;
 import ec.edu.ug.erp.util.constantes.ISchemaNames;
 import ec.edu.ug.erp.util.constantes.ISequenceGenerators;
 import ec.edu.ug.erp.util.constantes.ISequenceTables;
+import ec.edu.ug.erp.util.constantes.ITableFieldNames;
 import ec.edu.ug.erp.util.constantes.ITableNames;
 import ec.edu.ug.erp.util.type.BooleanToCharType;
 
 @Entity
-@Table(name=ITableNames.USUARIO_SUCURSAL,schema=ISchemaNames.SEGURIDAD,uniqueConstraints={@UniqueConstraint(columnNames={"usuario","sucursal","estado"})})
+@Table(name=ITableNames.USUARIO_SUCURSAL,schema=ISchemaNames.SEGURIDAD,uniqueConstraints={@UniqueConstraint(columnNames={ITableFieldNames.USUARIO_ID,ITableFieldNames.SUCURSAL_ID,ITableFieldNames.ESTADO})})
 public class UsuarioSucursalDTO extends GenericSeguridadDTO<UsuarioSucursalDTO>{
 	
 	private static final long serialVersionUID = 9029604394724370809L;

@@ -13,17 +13,19 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import ec.edu.ug.erp.dto.rrhh.EmpresaPersonaDTO;
 import ec.edu.ug.erp.dto.rrhh.PersonaDTO;
 import ec.edu.ug.erp.util.constantes.ISchemaNames;
 import ec.edu.ug.erp.util.constantes.ISequenceGenerators;
 import ec.edu.ug.erp.util.constantes.ISequenceTables;
+import ec.edu.ug.erp.util.constantes.ITableFieldNames;
 import ec.edu.ug.erp.util.constantes.ITableNames;
 
 
 @Entity
-@Table(name=ITableNames.EMPRESA,schema=ISchemaNames.ADMINISTRACION)
+@Table(name=ITableNames.EMPRESA,schema=ISchemaNames.ADMINISTRACION,uniqueConstraints={@UniqueConstraint(columnNames={ITableFieldNames.CODIGO})})
 public class EmpresaDTO extends GenericAdministracionDTO<EmpresaDTO> {
 
 	private static final long serialVersionUID = 9029604394724370809L;

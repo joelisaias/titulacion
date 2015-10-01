@@ -24,13 +24,14 @@ import org.hibernate.annotations.Type;
 import ec.edu.ug.erp.util.constantes.ISchemaNames;
 import ec.edu.ug.erp.util.constantes.ISequenceGenerators;
 import ec.edu.ug.erp.util.constantes.ISequenceTables;
+import ec.edu.ug.erp.util.constantes.ITableFieldNames;
 import ec.edu.ug.erp.util.constantes.ITableNames;
 import ec.edu.ug.erp.util.type.StringValuedEnum;
 import ec.edu.ug.erp.util.type.StringValuedEnumReflect;
 import ec.edu.ug.erp.util.type.StringValuedEnumType;
 
 @Entity
-@Table(name=ITableNames.MODULO,schema=ISchemaNames.SEGURIDAD,uniqueConstraints={@UniqueConstraint(columnNames={"codigo","estado"})})
+@Table(name=ITableNames.MODULO,schema=ISchemaNames.SEGURIDAD,uniqueConstraints={@UniqueConstraint(columnNames={ITableFieldNames.CODIGO,ITableFieldNames.ESTADO})})
 public class ModuloDTO extends GenericSeguridadDTO<ModuloDTO>{
 	
 	private static final long serialVersionUID = 9029604394724370809L;

@@ -17,11 +17,12 @@ import ec.edu.ug.erp.dto.administracion.SucursalDTO;
 import ec.edu.ug.erp.util.constantes.ISchemaNames;
 import ec.edu.ug.erp.util.constantes.ISequenceGenerators;
 import ec.edu.ug.erp.util.constantes.ISequenceTables;
+import ec.edu.ug.erp.util.constantes.ITableFieldNames;
 import ec.edu.ug.erp.util.constantes.ITableNames;
 
 
 @Entity
-@Table(name=ITableNames.REGION,schema=ISchemaNames.GENERAL,uniqueConstraints={@UniqueConstraint(columnNames="codigo")})
+@Table(name=ITableNames.REGION,schema=ISchemaNames.GENERAL,uniqueConstraints={@UniqueConstraint(columnNames=ITableFieldNames.CODIGO)})
 public class RegionDTO extends GenericGeneralDTO<RegionDTO> {
 
 	private static final long serialVersionUID = 9029604394724370809L;
@@ -31,7 +32,7 @@ public class RegionDTO extends GenericGeneralDTO<RegionDTO> {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator=ISequenceGenerators.REGION)
 	private Long id;
 
-	@Column(name=CODIGO)
+	@Column(name=CODIGO,unique=true)
 	private String codigo;
 	
 	@OneToMany(mappedBy=FIELD_REGION,fetch=FetchType.LAZY)

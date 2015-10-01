@@ -16,10 +16,11 @@ import ec.edu.ug.erp.dto.administracion.SucursalDTO;
 import ec.edu.ug.erp.util.constantes.ISchemaNames;
 import ec.edu.ug.erp.util.constantes.ISequenceGenerators;
 import ec.edu.ug.erp.util.constantes.ISequenceTables;
+import ec.edu.ug.erp.util.constantes.ITableFieldNames;
 import ec.edu.ug.erp.util.constantes.ITableNames;
 
 @Entity
-@Table(name=ITableNames.USUARIO_ROL,schema=ISchemaNames.SEGURIDAD,uniqueConstraints={@UniqueConstraint(columnNames={"usuario","rol"})})
+@Table(name=ITableNames.USUARIO_ROL,schema=ISchemaNames.SEGURIDAD,uniqueConstraints={@UniqueConstraint(columnNames={ITableFieldNames.USUARIO_ID,ITableFieldNames.ROL_ID})})
 public class UsuarioRolDTO extends GenericSeguridadDTO<UsuarioRolDTO>{
 	
 	private static final long serialVersionUID = 9029604394724370809L;

@@ -19,10 +19,11 @@ import ec.edu.ug.erp.dto.rrhh.EmpresaPersonaDTO;
 import ec.edu.ug.erp.util.constantes.ISchemaNames;
 import ec.edu.ug.erp.util.constantes.ISequenceGenerators;
 import ec.edu.ug.erp.util.constantes.ISequenceTables;
+import ec.edu.ug.erp.util.constantes.ITableFieldNames;
 import ec.edu.ug.erp.util.constantes.ITableNames;
 
 @Entity
-@Table(name=ITableNames.USUARIO,schema=ISchemaNames.SEGURIDAD,uniqueConstraints={@UniqueConstraint(columnNames={"codigo","empresaPersona","estado"})})
+@Table(name=ITableNames.USUARIO,schema=ISchemaNames.SEGURIDAD,uniqueConstraints={@UniqueConstraint(columnNames={ITableFieldNames.CODIGO,ITableFieldNames.EMPRESAPERSONA_ID,ITableFieldNames.ESTADO})})
 public class UsuarioDTO extends GenericSeguridadDTO<UsuarioDTO>{
 	
 	private static final long serialVersionUID = 9029604394724370809L;

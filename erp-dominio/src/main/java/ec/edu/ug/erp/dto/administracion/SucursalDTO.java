@@ -22,11 +22,12 @@ import ec.edu.ug.erp.dto.seguridad.UsuarioSucursalDTO;
 import ec.edu.ug.erp.util.constantes.ISchemaNames;
 import ec.edu.ug.erp.util.constantes.ISequenceGenerators;
 import ec.edu.ug.erp.util.constantes.ISequenceTables;
+import ec.edu.ug.erp.util.constantes.ITableFieldNames;
 import ec.edu.ug.erp.util.constantes.ITableNames;
 
 
 @Entity
-@Table(name=ITableNames.SUCURSAL,schema=ISchemaNames.ADMINISTRACION,uniqueConstraints={@UniqueConstraint(columnNames={"codigo","empresa"})})
+@Table(name=ITableNames.SUCURSAL,schema=ISchemaNames.ADMINISTRACION,uniqueConstraints={@UniqueConstraint(columnNames={ITableFieldNames.CODIGO,ITableFieldNames.EMPRESA_ID})})
 public class SucursalDTO extends GenericAdministracionDTO<SucursalDTO> {
 
 	private static final long serialVersionUID = 9029604394724370809L;
